@@ -1,0 +1,134 @@
+{
+  "name": "Matta Ashok Varma",
+  "title": "Senior Android Developer",
+  "tagline": "Building high-performance native apps with Kotlin, Compose & KMP",
+  "bio": {
+    "short": "Senior Android Developer specializing in Kotlin, Jetpack Compose, and Kotlin Multiplatform. 4+ years building production apps with clean architecture, on-device AI, and hardware integration.",
+    "long": "Results-driven Senior Android Developer with extensive expertise in modern Android ecosystems, utilizing Kotlin, Jetpack Compose, Kotlin Multiplatform (KMP), and Koin to build scalable applications. Specializes in hardware integration, deep Image Processing, and background processing architectures. Passionate about Clean Architecture, memory optimization, and leveraging Generative AI tools to accelerate development pipelines. Proven track record of migrating legacy XML systems, resolving complex crash patterns, scaling cloud assets via Cloudflare R2, and architecting custom on-device AI daemons and automation scrapers."
+  },
+  "location": "Hyderabad, India",
+  "avatar": "https://avatars.githubusercontent.com/u/138178952?v=4",
+  "social": {
+    "github": "https://github.com/ashokvarmamatta",
+    "linkedin": "https://www.linkedin.com/in/ashokvarmamatta",
+    "email": "mashokvarma1997@gmail.com"
+  },
+  "skills": {
+    "languages": ["Kotlin", "Java", "Python", "C", "SQL", "TypeScript", "JavaScript"],
+    "frameworks": ["Jetpack Compose", "KMP", "Koin", "Room DB", "ExoPlayer", "Media3", "Coil", "Coroutines", "Flow", "Firebase", "MVVM", "MVI", "GSAP", "Three.js", "React"],
+    "tools": ["Android Studio", "Git", "GitHub", "Cloudflare R2", "ComfyUI", "Gemini API", "REST APIs", "Google Maps API", "Twilio", "Vite"],
+    "soft": ["Clean Architecture", "Memory Optimization", "UI/UX Design", "Project Management", "Problem Solving"]
+  },
+  "projects": [
+    {
+      "id": "medha",
+      "name": "MEDHA - On-Device AI Chat",
+      "description": "Android-native AI chat application with dual-mode AI — completely offline using on-device inference, or online through Google's Gemini cloud API. No subscriptions, no data collection, no server required for offline mode.",
+      "tech": ["Kotlin", "On-Device AI", "Gemini API", "Jetpack Compose"],
+      "repo": "https://github.com/ashokvarmamatta/MEDHA",
+      "stars": 2,
+      "language": "Kotlin",
+      "highlight": "Privacy-focused dual-mode AI"
+    },
+    {
+      "id": "zeroclaw",
+      "name": "ZeroClawAndroid - AI Agent Daemon",
+      "description": "Android-native AI background daemon running 24/7 as a foreground service, connecting Telegram and WhatsApp (via Twilio) to multiple LLMs with automatic waterfall failover and Cloudflare Tunnel integration.",
+      "tech": ["Kotlin", "Telegram API", "Twilio", "LLM Orchestration", "Cloudflare Tunnel"],
+      "repo": "https://github.com/ashokvarmamatta/ZeroClawAndroid",
+      "language": "Kotlin",
+      "highlight": "Multi-LLM orchestration with auto-failover"
+    },
+    {
+      "id": "proplayer",
+      "name": "ProPlayer - Video Player",
+      "description": "Modern feature-rich video player with gesture controls, PiP, subtitles, playlists, multi-language support. Built 100% with Jetpack Compose following MVVM architecture with Koin DI.",
+      "tech": ["Kotlin", "Jetpack Compose", "ExoPlayer", "Koin", "Room DB", "Coil 3"],
+      "repo": "https://github.com/ashokvarmamatta/videoplayer2",
+      "stars": 1,
+      "language": "Kotlin",
+      "highlight": "Full Compose + clean MVVM architecture"
+    },
+    {
+      "id": "weatherkmp",
+      "name": "WeatherShow KMP",
+      "description": "Cross-platform weather application built with Kotlin Multiplatform, sharing business logic across Android, iOS, and Web while maintaining native UI performance.",
+      "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "KMP", "Ktor"],
+      "repo": "https://github.com/ashokvarmamatta/WeatherShow-KMP",
+      "demo": "https://weather-show-kmp.vercel.app",
+      "language": "Kotlin",
+      "highlight": "KMP cross-platform, deployed to Vercel"
+    },
+    {
+      "id": "citra",
+      "name": "Wallpaper Citra (Visual Cosmos)",
+      "description": "High-performance wallpaper application utilizing Cloudflare R2 buckets for efficient, scalable image storage and rapid asset delivery. Offline-first architecture using Room DB for faster load times and enhanced privacy.",
+      "tech": ["Kotlin", "Cloudflare R2", "Room DB", "Coil", "MVVM"],
+      "repo": "https://github.com/ashokvarmamatta/Chitra",
+      "language": "Kotlin",
+      "highlight": "Cloudflare R2 + offline-first architecture"
+    },
+    {
+      "id": "qrscanner",
+      "name": "QR & Barcode Scanner",
+      "description": "Scanner with lifecycle-aware Kotlin Coroutines, safely closing scanner clients after use to eliminate resource leaks. Optimized adapter performance with thumbnail caching.",
+      "tech": ["Kotlin", "CameraX", "ML Kit", "Coroutines", "Lifecycle"],
+      "repo": "https://github.com/ashokvarmamatta/QRBarcodeScannerCreator",
+      "language": "Kotlin",
+      "highlight": "Zero-leak lifecycle-aware concurrency"
+    },
+    {
+      "id": "gpsmaps",
+      "name": "GPS Village Maps & Navigation",
+      "description": "Navigation app integrating Google Maps and HERE Maps APIs with real-time Speedometer calculating speed from GPS location updates, optimized for signal fluctuations.",
+      "tech": ["Kotlin", "Google Maps API", "HERE Maps", "GPS", "Sensors"],
+      "repo": "https://github.com/ashokvarmamatta/GPSAreaMeasurement",
+      "language": "Kotlin",
+      "highlight": "Dual maps API + real-time GPS processing"
+    },
+    {
+      "id": "portfoliocreator",
+      "name": "Portfolio Creator",
+      "description": "AI-powered portfolio generator creating premium animated websites from GitHub profiles, resumes, or text input. Features Three.js particles, GSAP animations, and live editing.",
+      "tech": ["TypeScript", "React 19", "Vite", "Three.js", "GSAP"],
+      "repo": "https://github.com/ashokvarmamatta/portfolioCreater",
+      "language": "TypeScript",
+      "highlight": "Full-stack web dev + AI integration"
+    }
+  ],
+  "experience": [
+    {
+      "id": "ramson",
+      "title": "Android Developer",
+      "company": "Ramson Softech Pvt Ltd",
+      "duration": "Feb 2022 — Present",
+      "bullets": [
+        "Led UI overhaul of high-traffic legacy applications, migrating critical modules from XML to Jetpack Compose to reduce boilerplate and improve maintainability. Refactored codebases with Koin for pragmatic dependency injection.",
+        "Resolved critical memory leaks and OutOfMemoryError crashes across media services by implementing robust bitmap recycling, lifecycle-aware coroutines, and safe surface tracking.",
+        "Spearheaded development of custom filters and real-time blending modes through deep research into bitmap rendering. Engineered GenAI pipelines integrating Gemini API and ComfyUI for server-side processing.",
+        "Designed complex offline-first Room DB schemas for heterogeneous data types and caching. Engineered hardware-interfacing features for low-latency camera access, flash control, and microphone integration."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": "btech",
+      "degree": "B.Tech — Electronics & Communication Engineering",
+      "institution": "Institute of Aeronautical Engineering",
+      "years": "",
+      "notes": "GPA: 64.5%"
+    }
+  ],
+  "certifications": [],
+  "stats": {
+    "repos": 63,
+    "stars": 4,
+    "followers": 3
+  },
+  "theme": {
+    "style": "dark-minimal",
+    "primaryColor": "#00d4aa",
+    "accentColor": "#6366f1",
+    "font": "Inter"
+  }
+}
