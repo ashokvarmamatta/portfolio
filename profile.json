@@ -60,13 +60,23 @@
       "highlight": "KMP cross-platform, deployed to Vercel"
     },
     {
-      "id": "citra",
-      "name": "Wallpaper Citra (Visual Cosmos)",
-      "description": "High-performance wallpaper application utilizing Cloudflare R2 buckets for efficient, scalable image storage and rapid asset delivery. Offline-first architecture using Room DB for faster load times and enhanced privacy.",
-      "tech": ["Kotlin", "Cloudflare R2", "Room DB", "Coil", "MVVM"],
+      "id": "chitra-android",
+      "name": "Chitra: AI Wallpapers",
+      "description": "AI-powered wallpaper app built from scratch to production and shipped to Google Play Store. Curated wallpaper collections with Cloudflare R2 CDN, offline-first architecture, and Clean Architecture.",
+      "tech": ["Kotlin", "Jetpack Compose", "Cloudflare R2", "Room DB", "MVVM", "Clean Architecture"],
+      "repo": "https://github.com/ashokvarmamatta/Chitra-android",
+      "playstore": "https://play.google.com/store/apps/details?id=com.ashes.dev.works.chitra.cosmos",
+      "language": "Kotlin",
+      "highlight": "Live on Google Play — built from scratch to production"
+    },
+    {
+      "id": "citra-kmp",
+      "name": "Chitra KMP — Cross-Platform Wallpaper Engine",
+      "description": "High-performance wallpaper application utilizing Cloudflare R2 buckets for efficient, scalable image storage and rapid asset delivery. Compose Multiplatform running on Android, Desktop (JVM), and Web (Wasm/JS).",
+      "tech": ["Kotlin", "Compose Multiplatform", "Cloudflare R2", "Coil 3", "Voyager"],
       "repo": "https://github.com/ashokvarmamatta/Chitra",
       "language": "Kotlin",
-      "highlight": "Cloudflare R2 + offline-first architecture"
+      "highlight": "Compose Multiplatform — 3 platforms from single codebase"
     },
     {
       "id": "qrscanner",
