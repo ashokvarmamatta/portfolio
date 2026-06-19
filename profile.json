@@ -23,8 +23,8 @@
     {
       "id": "medha",
       "name": "MEDHA - On-Device AI Chat",
-      "description": "Android-native AI chat application with dual-mode AI — completely offline using on-device inference, or online through Google's Gemini cloud API. No subscriptions, no data collection, no server required for offline mode.",
-      "tech": ["Kotlin", "On-Device AI", "Gemini API", "Jetpack Compose"],
+      "description": "Android-native AI chat application with dual-mode AI — completely offline using on-device Gemma 4 (Google LiteRT LM, GPU-accelerated text/vision/audio), or online through Google's Gemini cloud API. No subscriptions, no data collection, no server required for offline mode.",
+      "tech": ["Kotlin", "Gemma 4", "LiteRT LM", "On-Device AI", "Gemini API", "Jetpack Compose"],
       "repo": "https://github.com/ashokvarmamatta/MEDHA",
       "stars": 2,
       "language": "Kotlin",
