@@ -251,6 +251,13 @@ nav.scrolled { border-bottom-color: var(--border); background: rgba(10, 10, 15, 
 
 /* ===== SECTIONS COMMON ===== */
 section { padding: var(--section-pad) clamp(20px, 4vw, 48px); }
+
+/* Live Sites section — hover feedback on the card links */
+.live-site-card { will-change: transform; }
+a.live-site-card:hover {
+  border-color: var(--primary) !important;
+  transform: translateY(-3px);
+}
 .section-inner { max-width: 1200px; margin: 0 auto; }
 .section-label {
   font-family: var(--mono); font-size: 0.8rem;
@@ -677,6 +684,7 @@ footer p { color: var(--text-dim); font-size: 0.8rem; }
       <li><a href="#skills">Skills</a></li>
       <li><a href="#company">Play Store</a></li>
       <li><a href="#projects">Projects</a></li>
+      <li><a href="#live-sites">Live Sites</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#education">Education</a></li>
       <li><a href="#contact">Contact</a></li>
@@ -1123,6 +1131,55 @@ footer p { color: var(--text-dim); font-size: 0.8rem; }
   </div>
 </section>
 
+<!-- Live Sites -->
+<section id="live-sites">
+  <div class="section-inner">
+    <div class="section-label reveal">// live sites</div>
+    <div class="section-title reveal">Ventures &amp; Publications</div>
+    <div class="section-desc reveal">Public sites I build and maintain across the ashokvarma.dev domain &mdash; all live, indexed, and open for you to explore.</div>
+
+    <div class="live-sites-grid" style="display:grid;grid-template-columns:1fr;gap:24px;margin-top:32px;">
+
+      <!-- IOTL Tech -->
+      <a href="https://tech.ashokvarma.dev" target="_blank" rel="noopener" class="live-site-card reveal" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;text-decoration:none;color:inherit;transition:border-color .3s, transform .3s;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;">
+          <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#00d4aa,#6366f1);display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0a0f;font-size:1.2rem;">T</div>
+          <div style="display:flex;flex-direction:column;">
+            <h3 style="margin:0;font-size:1.35rem;font-weight:700;color:var(--text);">IOTL Tech &mdash; Dev &amp; AI Pulse</h3>
+            <span style="font-family:var(--mono);font-size:0.85rem;color:var(--primary);">tech.ashokvarma.dev</span>
+          </div>
+          <span style="margin-left:auto;font-size:0.75rem;padding:4px 12px;border-radius:100px;background:rgba(0,212,170,.1);color:var(--primary);border:1px solid rgba(0,212,170,.3);font-weight:600;">LIVE</span>
+        </div>
+        <p style="color:var(--text-muted);margin-bottom:16px;">An image-led gallery tracking the pulse of dev &amp; AI &mdash; each update illustrated and summarised. Categories: Jetpack Compose, Kotlin, Python, Android, KMP, On-device AI, Agentic AI, LLMs, Swift/iOS, Flutter.</p>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <span style="font-size:0.75rem;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-muted);">Vite + React</span>
+          <span style="font-size:0.75rem;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-muted);">Cloudflare Pages</span>
+          <span style="font-size:0.75rem;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-muted);">RSS + Sitemap</span>
+          <span style="font-size:0.75rem;padding:4px 10px;border-radius:6px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--text-muted);">Google-indexed</span>
+        </div>
+        <div style="margin-top:20px;display:inline-flex;align-items:center;gap:8px;color:var(--primary);font-weight:600;font-size:0.9rem;">
+          Visit tech.ashokvarma.dev
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </div>
+      </a>
+
+      <!-- Portfolio (this site) -->
+      <div class="live-site-card reveal" style="display:block;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:32px;">
+        <div style="display:flex;align-items:center;gap:14px;margin-bottom:16px;flex-wrap:wrap;">
+          <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#6366f1,#00d4aa);display:flex;align-items:center;justify-content:center;font-weight:800;color:#0a0a0f;font-size:1.2rem;">A</div>
+          <div style="display:flex;flex-direction:column;">
+            <h3 style="margin:0;font-size:1.35rem;font-weight:700;color:var(--text);">ashokvarma.dev &mdash; Portfolio</h3>
+            <span style="font-family:var(--mono);font-size:0.85rem;color:var(--primary);">ashokvarma.dev</span>
+          </div>
+          <span style="margin-left:auto;font-size:0.75rem;padding:4px 12px;border-radius:100px;background:rgba(0,212,170,.1);color:var(--primary);border:1px solid rgba(0,212,170,.3);font-weight:600;">YOU'RE HERE</span>
+        </div>
+        <p style="color:var(--text-muted);margin-bottom:0;">The site you're on now &mdash; senior Android developer portfolio featuring published Play Store apps, seven featured GitHub projects (Kotlin, KMP, on-device AI, computer vision), work history, and contact.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- Experience -->
 <section id="experience">
   <div class="section-inner">
@@ -1193,8 +1250,18 @@ footer p { color: var(--text-dim); font-size: 0.8rem; }
 </section>
 
 <!-- Footer -->
-<footer>
-  <p>&copy; 2026 Matta Ashok Varma. Built with passion.</p>
+<footer style="border-top:1px solid var(--border);padding:40px clamp(20px,4vw,48px) 32px;text-align:center;">
+  <div style="max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:center;">
+    <div style="display:flex;gap:24px;flex-wrap:wrap;justify-content:center;font-size:0.9rem;">
+      <a href="#hero" style="color:var(--text-muted);">Home</a>
+      <a href="#projects" style="color:var(--text-muted);">Projects</a>
+      <a href="#live-sites" style="color:var(--text-muted);">Live Sites</a>
+      <a href="https://tech.ashokvarma.dev" target="_blank" rel="noopener" style="color:var(--text-muted);">IOTL Tech &#8599;</a>
+      <a href="#contact" style="color:var(--text-muted);">Contact</a>
+      <a href="/privacy.html" style="color:var(--text-muted);">Privacy Policy</a>
+    </div>
+    <p style="color:var(--text-dim);font-size:0.85rem;margin:0;">&copy; 2026 Matta Ashok Varma. Built with passion. &nbsp;&middot;&nbsp; Hosted on Cloudflare Pages.</p>
+  </div>
 </footer>
 
 <!-- ===== SCRIPTS ===== -->
