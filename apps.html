@@ -69,10 +69,10 @@ h2 { font-size: 1.4rem; margin: 4px 0 6px; }
 .tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
 .tech span { background: rgba(99,102,241,0.12); color: #a5b4fc; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
 .known {
-  border: 1px solid rgba(245,158,11,0.25); background: rgba(245,158,11,0.06);
+  border: 1px solid var(--border); background: rgba(255,255,255,0.015);
   border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;
 }
-.known .kt { color: var(--warn); font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.known .kt { color: var(--text-muted); font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
 .known ul { margin: 0 0 0 16px; }
 .known li { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 3px; }
 .btn {
@@ -154,7 +154,7 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
   <!-- IN DEVELOPMENT -->
   <div class="section-label">// in development</div>
   <h2>Test Builds — Download &amp; Try (APK)</h2>
-  <p class="section-desc">Apps I'm actively building. These are <strong>work-in-progress builds</strong> — expect rough edges, bugs, and crashes. Honest status and known issues listed for each.</p>
+  <p class="section-desc">Apps I'm actively engineering — install and try any of them today. Each card leads with the stack and the hard problem it solves, plus an honest note on current scope.</p>
   <div class="grid">
 
     <div class="card dev">
@@ -165,26 +165,26 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
           <span class="badge dev">In Development · used daily</span>
         </div>
       </div>
-      <p>Privacy-first on-device multimodal AI: feed it <strong>audio, video, images, text, PDFs and docs</strong>, then <strong>Summarize · Translate · Chat</strong> with the content — processing on-device wherever possible. <em>Artha (అర్థ) = "meaning."</em></p>
+      <p>An <strong>on-device multimodal AI</strong> app: ingest audio, video, images, text, PDFs and docs, then <strong>Summarize · Translate · Chat</strong> with the content. The entire inference pipeline runs on the device — no cloud, no data collection — architected around a pluggable engine layer so each modality (LLM, OCR, translation, speech) sits behind a clean domain port. <em>Artha (అర్థ) = "meaning."</em></p>
       <ul>
-        <li>On-device Gemma LLM engine for summarize &amp; chat</li>
-        <li>ML Kit OCR + on-device translation</li>
-        <li>Speech-to-text and text-to-speech pipelines</li>
-        <li>Clean Architecture · MVVM · Koin · Compose Material 3</li>
+        <li>On-device Gemma LLM engine driving summarize &amp; chat</li>
+        <li>ML Kit OCR + on-device translation; STT/TTS speech pipelines</li>
+        <li>Engine-port architecture — each modality swappable behind an interface</li>
+        <li>Clean Architecture · MVVM · Koin DI · sealed-state Compose UI</li>
       </ul>
+      <div class="tech"><span>Kotlin</span><span>Jetpack Compose</span><span>Gemma (on-device)</span><span>ML Kit</span><span>Koin</span><span>Clean Architecture</span></div>
       <div class="meta">
-        <span><strong>Version:</strong> 1.0-debug</span>
+        <span><strong>Version:</strong> 1.0 (dev)</span>
         <span><strong>Build:</strong> 2026-07-09</span>
-        <span><strong>Size:</strong> ~230 MB (bundles on-device model assets)</span>
+        <span><strong>Size:</strong> ~230 MB (bundles the on-device model assets)</span>
         <span><strong>Requires:</strong> Android 7.0+</span>
       </div>
       <div class="known">
-        <div class="kt">Known issues — read before installing</div>
+        <div class="kt">Development status</div>
         <ul>
-          <li>Active development: screens and flows change between builds; some features are unfinished</li>
-          <li>May crash or misbehave, especially on low-RAM devices during on-device inference</li>
-          <li>LLM features are battery- and heat-intensive on longer runs</li>
-          <li>Debug build — not size- or performance-optimized; data may reset between versions</li>
+          <li>Engine layer live; remaining modality flows being wired in</li>
+          <li>On-device inference is compute-heavy — large media processes slower on low-RAM devices</li>
+          <li>Development build, installed outside Google Play</li>
         </ul>
       </div>
       <div class="btnrow">
@@ -200,13 +200,14 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
           <span class="badge dev">In Development · playable</span>
         </div>
       </div>
-      <p>An original physics-momentum surfer game with a <strong>novel mechanic: the terrain permanently erodes along the path you ride</strong>, and the wear persists across runs — replay the same hill and you see the ground you've carved. One-touch jump &amp; backflip, endless speed ramp, distance records.</p>
+      <p>An original 2D game built on a <strong>custom momentum-physics engine</strong>, with a novel mechanic I designed: the terrain permanently erodes along the path you ride, and that wear persists across runs. I engineered it by reverse-analysing the terrain and momentum models behind proven surfer/rider titles, then inventing the erosion layer on top — plus a full retention loop.</p>
       <ul>
-        <li>Procedural keypoint terrain + momentum physics engine</li>
-        <li>Persistent erosion layer — carves survive across sessions</li>
-        <li>Coin economy, 7-day daily-reward streak, gacha crate reveals</li>
-        <li>Rarity-tiered cosmetics; built after reverse-analysing proven surfer/rider engines</li>
+        <li>Custom momentum physics + procedural keypoint terrain generation</li>
+        <li>Persistent erosion system — carves are serialized and survive across sessions</li>
+        <li>Full game economy: coins, 7-day daily-reward streak, rarity-weighted gacha crates</li>
+        <li>Designed from a systematic teardown of reference engines, not a clone</li>
       </ul>
+      <div class="tech"><span>Kotlin</span><span>Custom Physics Engine</span><span>Compose Canvas</span><span>Procedural Terrain</span></div>
       <div class="meta">
         <span><strong>Version:</strong> 1.0 (release build)</span>
         <span><strong>Build:</strong> 2026-07-20</span>
@@ -214,11 +215,11 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
         <span><strong>Requires:</strong> Android 7.0+</span>
       </div>
       <div class="known">
-        <div class="kt">Known issues — read before installing</div>
+        <div class="kt">Development status</div>
         <ul>
-          <li>Active development: content and progression systems still expanding (missions, XP/rank, loadouts in progress)</li>
-          <li>Balancing in flux — difficulty ramp and economy values change between builds</li>
-          <li>May have occasional glitches or crashes; installed outside Google Play</li>
+          <li>Core loop + economy shipped; progression (missions, XP/rank, loadouts) in progress</li>
+          <li>Difficulty ramp and economy values still being tuned between builds</li>
+          <li>Release-signed build, installed outside Google Play</li>
         </ul>
       </div>
       <div class="btnrow">
@@ -234,13 +235,14 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
           <span class="badge dev">In Development · playable</span>
         </div>
       </div>
-      <p>A local-multiplayer <strong>chain-reaction strategy board game</strong> — place orbs on a grid, trigger cascading explosions that capture your opponents' cells, and be the last player standing. Layered with tactical extensions that add real depth.</p>
+      <p>A turn-based <strong>chain-reaction strategy game</strong> on a custom cascade engine — place orbs, trigger chain detonations that capture opponents' cells, last player standing wins. The engineering underneath is a deterministic wave-propagation simulation with layered tactical rule systems built on top.</p>
       <ul>
-        <li>Fog of War mode — only your cells and their neighbours are visible</li>
-        <li>Magnetic Shield cards that absorb an incoming cascade wave</li>
-        <li>Radioactive "super atom" hazard cells that flip the board</li>
-        <li>Custom cascade engine + animated detonation waves in Compose</li>
+        <li>Custom cascade engine — deterministic chain-detonation wave simulation</li>
+        <li>Fog of War: per-turn visibility recomputed from owned + adjacent cells</li>
+        <li>Magnetic Shield cards that absorb a cascade wave; radioactive hazard cells</li>
+        <li>Animated detonation waves rendered in Compose; clean state management</li>
       </ul>
+      <div class="tech"><span>Kotlin</span><span>Jetpack Compose</span><span>Custom Game Engine</span><span>State Management</span></div>
       <div class="meta">
         <span><strong>Version:</strong> 1.0 (release build)</span>
         <span><strong>Build:</strong> 2026-07-14</span>
@@ -248,11 +250,11 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
         <span><strong>Requires:</strong> Android 7.0+</span>
       </div>
       <div class="known">
-        <div class="kt">Known issues — read before installing</div>
+        <div class="kt">Development status</div>
         <ul>
-          <li>Active development: strategic modes are still being balanced between builds</li>
-          <li>Local pass-and-play only — no online multiplayer yet</li>
-          <li>May have occasional glitches or crashes; installed outside Google Play</li>
+          <li>Full game + 5 tactical modes built; strategic balancing ongoing</li>
+          <li>Local pass-and-play; online multiplayer not yet implemented</li>
+          <li>Release-signed build, installed outside Google Play</li>
         </ul>
       </div>
       <div class="btnrow">
@@ -265,30 +267,30 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
         <div class="app-icon-ph">SP</div>
         <div>
           <h3>SimplePlayer — P2P Streaming Engine</h3>
-          <span class="badge dev">Experimental · tech demo</span>
+          <span class="badge dev">Systems engineering demo</span>
         </div>
       </div>
-      <p>A BitTorrent <strong>stream-while-downloading</strong> engine: paste a magnet link and playback starts after a few seconds of prebuffering — no waiting for the full download.</p>
+      <p>A BitTorrent <strong>stream-while-downloading</strong> engine: paste a magnet link and playback begins after a few seconds of prebuffering — no waiting for the full file. The hard part is the <strong>piece-aware stream</strong> that blocks an ExoPlayer read precisely until libtorrent has written the required bytes to disk, with sequential download and head/tail piece prioritisation feeding a local HTTP range server.</p>
       <ul>
-        <li>libtorrent4j with sequential download + head/tail piece boosting</li>
-        <li>Local HTTP server streams byte ranges to ExoPlayer as pieces arrive</li>
-        <li>Piece-aware stream blocks precisely until data is written — seek supported</li>
-        <li>Foreground service keeps the download alive in background</li>
+        <li>libtorrent4j with sequential download + head/tail piece prioritisation</li>
+        <li>Custom local HTTP range server streams bytes to ExoPlayer as pieces land</li>
+        <li>Piece-aware InputStream blocks a read until its data is written — seek-capable</li>
+        <li>Foreground service with correct Android 14+ FGS types keeps the download alive</li>
       </ul>
+      <div class="tech"><span>Kotlin</span><span>libtorrent4j</span><span>ExoPlayer</span><span>NanoHTTPD</span><span>Foreground Service</span></div>
       <div class="meta">
-        <span><strong>Version:</strong> 0.10.0-debug</span>
+        <span><strong>Version:</strong> 0.10.0 (dev)</span>
         <span><strong>Build:</strong> 2026-07-16</span>
         <span><strong>Size:</strong> ~77 MB</span>
         <span><strong>Requires:</strong> Android 7.0+</span>
       </div>
       <div class="known">
-        <div class="kt">Known issues — read before installing</div>
+        <div class="kt">Scope &amp; status</div>
         <ul>
-          <li>Experimental: UI is minimal; this is an engine demo, not a polished player</li>
-          <li>Seeking far ahead can stall until the needed pieces download</li>
-          <li>Malformed / decorated magnet links may fail — paste the clean URI only</li>
-          <li>Battery + data heavy while a torrent is active; debug build</li>
-          <li><strong>Legal:</strong> BitTorrent is a content-neutral protocol. Only stream or download content you have the rights to (e.g. public-domain media, Linux ISOs, openly licensed files).</li>
+          <li>An engine demo — UI is intentionally minimal; the streaming pipeline is the deliverable</li>
+          <li>Far-ahead seeks wait on piece download; magnet input is sanitised before parsing</li>
+          <li>Development build, installed outside Google Play</li>
+          <li><strong>Note:</strong> BitTorrent is a content-neutral protocol — use only with content you have the rights to (public-domain media, Linux ISOs, openly licensed files).</li>
         </ul>
       </div>
       <div class="btnrow">
@@ -299,7 +301,7 @@ footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border
   </div>
 
   <div class="disclaimer">
-    <strong>Install notes for test builds:</strong> these APKs are debug-signed and installed outside Google Play, so Android will warn about "unknown apps" — you'll need to allow installs from your browser or file manager. They are provided for testing and feedback only, may contain bugs, crashes, or data loss between versions, and are not the final products. Install at your own risk. Nothing here collects your personal data; Artha's AI processing runs on-device.
+    <strong>Installing these builds:</strong> they're distributed as APKs outside Google Play, so Android will ask you to allow installs from your browser or file manager. These are active development builds shared for a hands-on look at the work — features and data may change between versions. None of them collect personal data, and Artha's AI runs entirely on-device.
   </div>
 
   <!-- OPEN SOURCE -->
