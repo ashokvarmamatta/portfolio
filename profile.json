@@ -41,6 +41,16 @@
       "highlight": "Multi-LLM orchestration with auto-failover"
     },
     {
+      "id": "antar",
+      "name": "ANTAR - Device Info & Analytics",
+      "description": "Device analytics app with real-time StateFlow streams for 44+ hardware sensors, dual SIM detection, battery health gauges, GPS satellite tracking, and full network deep scan. Custom Compose Canvas charts. Designed, architected, and shipped end-to-end to Google Play as a solo developer.",
+      "tech": ["Kotlin", "Jetpack Compose", "Custom Canvas", "SensorManager", "Clean Architecture"],
+      "repo": "https://github.com/ashokvarmamatta/ANTAR",
+      "playstore": "https://play.google.com/store/apps/details?id=com.ashes.dev.works.system.core.internals.antar",
+      "language": "Kotlin",
+      "highlight": "Live on Google Play — 44+ sensors, real-time StateFlow"
+    },
+    {
       "id": "artha",
       "name": "Artha - On-Device Multimodal AI (Sense Maker)",
       "description": "Privacy-first app that ingests audio, video, images, PDFs and docs, then summarizes, translates and chats with the content fully on-device — Gemma LLM engine, ML Kit OCR & translation, TTS/STT pipelines. Clean Architecture with Koin and sealed UiState flows. In active development and daily personal use.",
