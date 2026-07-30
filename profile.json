@@ -26,7 +26,7 @@
       "description": "Android-native AI chat application with dual-mode AI — completely offline using on-device Gemma 4 (Google LiteRT LM, GPU-accelerated text/vision/audio), or online through Google's Gemini cloud API. No subscriptions, no data collection, no server required for offline mode.",
       "tech": ["Kotlin", "Gemma 4", "LiteRT LM", "On-Device AI", "Gemini API", "Jetpack Compose"],
       "repo": "https://github.com/ashokvarmamatta/MEDHA",
-      "stars": 2,
+      "stars": 7,
       "language": "Kotlin",
       "highlight": "Privacy-focused dual-mode AI"
     },
@@ -36,8 +36,17 @@
       "description": "Android-native AI background daemon running 24/7 as a foreground service, connecting Telegram and WhatsApp (via Twilio) to multiple LLMs with automatic waterfall failover and Cloudflare Tunnel integration.",
       "tech": ["Kotlin", "Telegram API", "Twilio", "LLM Orchestration", "Cloudflare Tunnel"],
       "repo": "https://github.com/ashokvarmamatta/ZeroClawAndroid",
+      "stars": 12,
       "language": "Kotlin",
       "highlight": "Multi-LLM orchestration with auto-failover"
+    },
+    {
+      "id": "artha",
+      "name": "Artha - On-Device Multimodal AI (Sense Maker)",
+      "description": "Privacy-first app that ingests audio, video, images, PDFs and docs, then summarizes, translates and chats with the content fully on-device — Gemma LLM engine, ML Kit OCR & translation, TTS/STT pipelines. Clean Architecture with Koin and sealed UiState flows. In active development and daily personal use.",
+      "tech": ["Kotlin", "Jetpack Compose", "Gemma", "ML Kit", "Koin", "Clean Architecture"],
+      "language": "Kotlin",
+      "highlight": "Summarize · Translate · Chat — fully on-device"
     },
     {
       "id": "proplayer",
@@ -115,7 +124,7 @@
       "bullets": [
         "Led UI overhaul of high-traffic legacy applications, migrating critical modules from XML to Jetpack Compose to reduce boilerplate and improve maintainability. Refactored codebases with Koin for pragmatic dependency injection.",
         "Resolved critical memory leaks and OutOfMemoryError crashes across media services by implementing robust bitmap recycling, lifecycle-aware coroutines, and safe surface tracking.",
-        "Spearheaded development of custom filters and real-time blending modes through deep research into bitmap rendering. Engineered GenAI pipelines integrating Gemini API and ComfyUI for server-side processing.",
+        "Shipped real on-device ML features in production apps: ESRGAN super-resolution via LiteRT with GPU delegation (incl. TFLite-to-LiteRT migration for Android 15's 16 KB page-size mandate), ML Kit subject segmentation for background removal and portrait blur, and on-device image-labeling + OCR content search. Also engineered GenAI pipelines integrating Gemini API and ComfyUI for server-side processing.",
         "Designed complex offline-first Room DB schemas for heterogeneous data types and caching. Engineered hardware-interfacing features for low-latency camera access, flash control, and microphone integration."
       ]
     }
@@ -125,15 +134,15 @@
       "id": "btech",
       "degree": "B.Tech — Electronics & Communication Engineering",
       "institution": "Institute of Aeronautical Engineering",
-      "years": "",
-      "notes": "GPA: 64.5%"
+      "years": "2026",
+      "notes": "First Class"
     }
   ],
   "certifications": [],
   "stats": {
-    "repos": 96,
-    "stars": 4,
-    "followers": 3
+    "repos": 82,
+    "stars": 19,
+    "followers": 6
   },
   "theme": {
     "style": "dark-minimal",

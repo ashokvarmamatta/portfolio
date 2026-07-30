@@ -5,7 +5,7 @@
 <title>Matta Ashok Varma - Resume</title>
 <style>
 @page { margin: 0; size: A4; }
-@media print { body { -webkit-print-color-adjust: exact; zoom: 0.90; } }
+@media print { body { -webkit-print-color-adjust: exact; zoom: 0.84; } }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
@@ -68,13 +68,13 @@ li strong { color: #111; }
     <a href="mailto:mashokvarma1997@gmail.com">mashokvarma1997@gmail.com</a><span class="sep">|</span>
     <a href="https://www.linkedin.com/in/ashokvarmamatta">linkedin.com/in/ashokvarmamatta</a><span class="sep">|</span>
     <a href="https://github.com/ashokvarmamatta">github.com/ashokvarmamatta</a><span class="sep">|</span>
-    <a href="https://ashokvarmamatta.github.io/portfolio/">Portfolio</a>
+    <a href="https://ashokvarma.dev/">ashokvarma.dev</a>
   </div>
 </div>
 
 <div class="section-title">SUMMARY</div>
 <div class="summary">
-&bull; Senior Android Developer with 4+ years building and shipping production mobile apps for <strong>Android and iOS</strong> using Kotlin, Jetpack Compose, and <strong>Kotlin Multiplatform (KMP) / Compose Multiplatform</strong> &mdash; one shared codebase, native UI, end-to-end to Google Play release (latest: <a href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.chitra.cosmos" style="color:#1a5276;">Chitra: AI Wallpapers</a>). Proven track record modernizing legacy XML codebases to Compose, eliminating critical OOM crashes, and achieving 99.4% crash-free rates. Expertise in on-device AI, hardware integration, Clean Architecture (MVVM/MVI), and AI-assisted development. Delivered 20+ apps across 90+ repositories.
+&bull; Senior Android Developer with 4+ years building and shipping production mobile apps for <strong>Android and iOS</strong> using Kotlin, Jetpack Compose, and <strong>Kotlin Multiplatform (KMP) / Compose Multiplatform</strong> &mdash; one shared codebase, native UI, end-to-end to Google Play release (latest: <a href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.chitra.cosmos" style="color:#1a5276;">Chitra: AI Wallpapers</a>). Proven track record modernizing legacy XML codebases to Compose, eliminating critical OOM crashes, and achieving 99.4% crash-free rates. Expertise in on-device AI (LiteRT, ML Kit, Gemma), hardware integration, Clean Architecture (MVVM/MVI), and AI-assisted development. Delivered 20+ apps across 80+ repositories.
 </div>
 
 <div class="section-title">TECHNICAL SKILLS</div>
@@ -96,7 +96,7 @@ li strong { color: #111; }
 <ul>
   <li><strong>Architecture & Modernization:</strong> Led UI overhaul of high-traffic Play Store apps, migrating 60% of critical modules from XML to Jetpack Compose. Refactored codebases with Koin DI, reducing boilerplate by 40% and improving maintainability across the product suite.</li>
   <li><strong>Performance & Stability:</strong> Resolved critical memory leaks and OutOfMemoryError crashes across media services by implementing bitmap recycling, lifecycle-aware coroutines, and safe surface tracking. Achieved <strong>99.4% crash-free rate</strong> and reduced ANR rate by <strong>38%</strong>.</li>
-  <li><strong>Media & Generative AI:</strong> Engineered custom image filters and real-time blending modes via bitmap rendering research. Built GenAI pipelines integrating Gemini API and ComfyUI for server-side video/image processing.</li>
+  <li><strong>On-Device AI in Production:</strong> Shipped real on-device ML features in production apps &mdash; ESRGAN super-resolution via <strong>LiteRT</strong> with GPU delegation (incl. TFLite&rarr;LiteRT migration for Android 15's 16 KB page-size mandate), <strong>ML Kit</strong> subject segmentation (background removal, portrait blur), and on-device image-labeling + OCR content search. Also built GenAI pipelines (Gemini API + ComfyUI) for server-side processing.</li>
   <li><strong>Hardware & Data Management:</strong> Designed offline-first Room DB schemas for heterogeneous data types. Engineered hardware-interfacing features for low-latency camera access, flash control, and microphone integration.</li>
 </ul>
 
@@ -142,6 +142,14 @@ li strong { color: #111; }
 </div>
 
 <div class="proj-block">
+  <span class="project-name">Artha &mdash; On-Device Multimodal AI (Sense Maker)</span>
+  <ul>
+    <li>Building a privacy-first app that ingests <strong>audio, video, images, PDFs and docs</strong>, then summarizes, translates and chats with the content <strong>fully on-device</strong> &mdash; Gemma LLM engine, ML Kit OCR &amp; translation, TTS/STT pipelines. In active development and daily personal use.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Gemma (on-device), ML Kit, Koin, Clean Architecture, Material 3</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
   <span class="project-name">Chitra KMP &mdash; Cross-Platform Wallpaper Engine (Android, Desktop, Web) &nbsp;<a href="https://github.com/ashokvarmamatta/Chitra" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a></span>
   <ul>
     <li>Architected a Compose Multiplatform app running on <strong>Android, Desktop (JVM), and Web (Wasm/JS)</strong> from a single Kotlin codebase. Offline-first sync with Cloudflare R2 CDN, 100% shared UI via Voyager navigation, Coil 3 image loading.</li>
@@ -163,7 +171,7 @@ li strong { color: #111; }
   <span class="edu-school">Institute of Aeronautical Engineering</span>
   <span class="edu-loc">Hyderabad, India</span>
 </div>
-<div class="edu-degree">Bachelor of Technology, Electronics &amp; Communication Engineering &nbsp;|&nbsp; 2015 &ndash; 2019</div>
+<div class="edu-degree">Bachelor of Technology, Electronics &amp; Communication Engineering &nbsp;|&nbsp; 2026</div>
 
 </body>
 </html>
