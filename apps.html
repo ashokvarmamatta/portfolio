@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apps — Matta Ashok Varma</title>
+<meta name="description" content="All apps by Matta Ashok Varma — shipped on Google Play, in-development test builds (APK downloads), and open-source projects.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://ashokvarma.dev/apps">
+<style>
+:root {
+  --primary: #00d4aa;
+  --accent: #6366f1;
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --bg-card-hover: #1a1a28;
+  --text: #e4e4e7;
+  --text-muted: #71717a;
+  --text-dim: #52525b;
+  --border: #27272a;
+  --border-hover: #3f3f46;
+  --warn: #f59e0b;
+  --live: #34A853;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--primary); text-decoration: none; }
+.wrap { max-width: 1000px; margin: 0 auto; padding: 0 24px 80px; }
+.topnav { display: flex; justify-content: space-between; align-items: center; padding: 24px 0; }
+.topnav .brand { font-weight: 700; letter-spacing: 0.5px; color: var(--text); }
+.topnav .brand span { color: var(--primary); }
+.back { font-size: 0.9rem; color: var(--text-muted); border: 1px solid var(--border); padding: 8px 16px; border-radius: 8px; transition: all .2s; }
+.back:hover { color: var(--primary); border-color: var(--primary); }
+h1 { font-size: 2.2rem; margin: 28px 0 8px; letter-spacing: -0.5px; }
+.sub { color: var(--text-muted); max-width: 640px; margin-bottom: 20px; }
+.section-label { color: var(--primary); font-family: 'Consolas', monospace; font-size: 0.85rem; margin-top: 48px; }
+h2 { font-size: 1.4rem; margin: 4px 0 6px; }
+.section-desc { color: var(--text-muted); font-size: 0.92rem; margin-bottom: 20px; max-width: 680px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px; }
+.card {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+  padding: 26px; transition: border-color .2s, background .2s;
+}
+.card:hover { border-color: var(--border-hover); background: var(--bg-card-hover); }
+.card.live { border-color: rgba(52,168,83,0.35); }
+.card.dev { border-color: rgba(245,158,11,0.3); }
+.app-head { display: flex; align-items: center; gap: 16px; margin-bottom: 14px; }
+.app-head img { width: 60px; height: 60px; border-radius: 13px; box-shadow: 0 2px 12px rgba(0,0,0,0.35); }
+.app-icon-ph {
+  width: 60px; height: 60px; border-radius: 13px; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 1.3rem; color: #0a0a0f; background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+.app-head h3 { font-size: 1.15rem; margin-bottom: 2px; }
+.badge { display: inline-block; font-size: 0.68rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 2px 0; }
+.badge.live { color: var(--live); }
+.badge.dev { color: var(--warn); }
+.card p { color: #adb5bd; font-size: 0.9rem; margin-bottom: 12px; }
+.card ul { margin: 0 0 14px 18px; }
+.card li { font-size: 0.86rem; color: var(--text-muted); margin-bottom: 4px; }
+.meta { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 0.78rem; color: var(--text-dim); margin-bottom: 14px; }
+.meta strong { color: var(--text-muted); font-weight: 600; }
+.tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px; }
+.tech span { background: rgba(99,102,241,0.12); color: #a5b4fc; padding: 3px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; }
+.known {
+  border: 1px solid rgba(245,158,11,0.25); background: rgba(245,158,11,0.06);
+  border-radius: 10px; padding: 12px 14px; margin-bottom: 16px;
+}
+.known .kt { color: var(--warn); font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 6px; }
+.known ul { margin: 0 0 0 16px; }
+.known li { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 3px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px; padding: 10px 20px; border-radius: 8px;
+  font-size: 0.88rem; font-weight: 600; border: 1px solid var(--primary); color: var(--primary); transition: all .2s;
+}
+.btn:hover { background: rgba(0,212,170,0.1); }
+.btn.play { border-color: var(--live); color: var(--live); }
+.btn.play:hover { background: rgba(52,168,83,0.1); }
+.btn.gh { border-color: var(--border-hover); color: var(--text-muted); }
+.btn.gh:hover { color: var(--text); border-color: var(--text-muted); }
+.btnrow { display: flex; flex-wrap: wrap; gap: 10px; }
+.disclaimer {
+  border: 1px solid var(--border); background: var(--bg-card); border-radius: 12px;
+  padding: 18px 20px; margin-top: 24px; font-size: 0.84rem; color: var(--text-muted);
+}
+.disclaimer strong { color: var(--warn); }
+.oss { display: flex; flex-wrap: wrap; gap: 10px; }
+.oss a {
+  border: 1px solid var(--border); border-radius: 8px; padding: 8px 14px; font-size: 0.84rem;
+  color: var(--text-muted); transition: all .2s;
+}
+.oss a:hover { color: var(--primary); border-color: var(--primary); }
+footer { margin-top: 64px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-dim); font-size: 0.82rem; }
+@media (max-width: 640px) { h1 { font-size: 1.7rem; } .card { padding: 20px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="topnav">
+    <div class="brand">ashok<span>varma</span>.dev</div>
+    <a class="back" href="/">&larr; Back to portfolio</a>
+  </nav>
+
+  <h1>Apps</h1>
+  <p class="sub">Everything I've built and where it stands — shipped on Google Play, in-development test builds you can install today, and open-source projects on GitHub.</p>
+
+  <!-- SHIPPED -->
+  <div class="section-label">// shipped</div>
+  <h2>Live on Google Play</h2>
+  <p class="section-desc">Designed, architected, developed, and shipped end-to-end as a solo developer.</p>
+  <div class="grid">
+
+    <div class="card live">
+      <div class="app-head">
+        <img src="https://play-lh.googleusercontent.com/Iv03utZCQVH3RHz2Hh9A9xqKq6aUU-eiskPmhIe3fsfQfXmWfCwY-gIkuAXmvdnbI25rRW02th65Qtk9lbw8=w240-h480" alt="Chitra icon">
+        <div>
+          <h3>Chitra: AI Wallpapers</h3>
+          <span class="badge live">Live on Google Play</span>
+        </div>
+      </div>
+      <p>AI-powered wallpaper app with curated collections — Cloudflare R2 CDN delivery, offline-first Room caching, Clean Architecture.</p>
+      <div class="tech"><span>Kotlin</span><span>Jetpack Compose</span><span>Cloudflare R2</span><span>Room</span><span>MVVM</span></div>
+      <div class="btnrow">
+        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.chitra.cosmos" target="_blank" rel="noopener">Get it on Google Play</a>
+      </div>
+    </div>
+
+    <div class="card live">
+      <div class="app-head">
+        <img src="https://play-lh.googleusercontent.com/k1GL7ov3Md2Ufl3Rz26WOp2uhy-qfgKvebLfpB_Osxqfhh6rkHcPlV7Fq2k6Z9d-E7R6LsbP6gvZtrUTcegTbg=w240-h480" alt="Antar icon">
+        <div>
+          <h3>Antar - Device Info</h3>
+          <span class="badge live">Live on Google Play</span>
+        </div>
+      </div>
+      <p>Device analytics with real-time StateFlow streams for 44+ hardware sensors — dual SIM, GPS satellites, battery health, network deep scan, custom Compose Canvas charts.</p>
+      <div class="tech"><span>Kotlin</span><span>Jetpack Compose</span><span>SensorManager</span><span>Custom Canvas</span><span>Clean Architecture</span></div>
+      <div class="btnrow">
+        <a class="btn play" href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.system.core.internals.antar" target="_blank" rel="noopener">Get it on Google Play</a>
+        <a class="btn gh" href="https://github.com/ashokvarmamatta/ANTAR" target="_blank" rel="noopener">Source</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IN DEVELOPMENT -->
+  <div class="section-label">// in development</div>
+  <h2>Test Builds — Download &amp; Try (APK)</h2>
+  <p class="section-desc">Apps I'm actively building and using daily. These are <strong>work-in-progress debug builds</strong> — expect rough edges, bugs, and crashes. Honest status and known issues listed for each.</p>
+  <div class="grid">
+
+    <div class="card dev">
+      <div class="app-head">
+        <div class="app-icon-ph">Ar</div>
+        <div>
+          <h3>Artha — Sense Maker</h3>
+          <span class="badge dev">In Development · used daily</span>
+        </div>
+      </div>
+      <p>Privacy-first on-device multimodal AI: feed it <strong>audio, video, images, text, PDFs and docs</strong>, then <strong>Summarize · Translate · Chat</strong> with the content — processing on-device wherever possible. <em>Artha (అర్థ) = "meaning."</em></p>
+      <ul>
+        <li>On-device Gemma LLM engine for summarize &amp; chat</li>
+        <li>ML Kit OCR + on-device translation</li>
+        <li>Speech-to-text and text-to-speech pipelines</li>
+        <li>Clean Architecture · MVVM · Koin · Compose Material 3</li>
+      </ul>
+      <div class="meta">
+        <span><strong>Version:</strong> 1.0-debug</span>
+        <span><strong>Build:</strong> 2026-07-09</span>
+        <span><strong>Size:</strong> ~230 MB (bundles on-device model assets)</span>
+        <span><strong>Requires:</strong> Android 7.0+</span>
+      </div>
+      <div class="known">
+        <div class="kt">Known issues — read before installing</div>
+        <ul>
+          <li>Active development: screens and flows change between builds; some features are unfinished</li>
+          <li>May crash or misbehave, especially on low-RAM devices during on-device inference</li>
+          <li>LLM features are battery- and heat-intensive on longer runs</li>
+          <li>Debug build — not size- or performance-optimized; data may reset between versions</li>
+        </ul>
+      </div>
+      <div class="btnrow">
+        <a class="btn" href="https://pub-c99e795f9a1d4801af575141a7b05e1f.r2.dev/aiinstructor/ashok/apks/artha-latest-debug.apk">Download APK (230 MB)</a>
+      </div>
+    </div>
+
+    <div class="card dev">
+      <div class="app-head">
+        <div class="app-icon-ph">SP</div>
+        <div>
+          <h3>SimplePlayer — P2P Streaming Engine</h3>
+          <span class="badge dev">Experimental · tech demo</span>
+        </div>
+      </div>
+      <p>A BitTorrent <strong>stream-while-downloading</strong> engine: paste a magnet link and playback starts after a few seconds of prebuffering — no waiting for the full download.</p>
+      <ul>
+        <li>libtorrent4j with sequential download + head/tail piece boosting</li>
+        <li>Local HTTP server streams byte ranges to ExoPlayer as pieces arrive</li>
+        <li>Piece-aware stream blocks precisely until data is written — seek supported</li>
+        <li>Foreground service keeps the download alive in background</li>
+      </ul>
+      <div class="meta">
+        <span><strong>Version:</strong> 0.10.0-debug</span>
+        <span><strong>Build:</strong> 2026-07-16</span>
+        <span><strong>Size:</strong> ~77 MB</span>
+        <span><strong>Requires:</strong> Android 7.0+</span>
+      </div>
+      <div class="known">
+        <div class="kt">Known issues — read before installing</div>
+        <ul>
+          <li>Experimental: UI is minimal; this is an engine demo, not a polished player</li>
+          <li>Seeking far ahead can stall until the needed pieces download</li>
+          <li>Malformed / decorated magnet links may fail — paste the clean URI only</li>
+          <li>Battery + data heavy while a torrent is active; debug build</li>
+          <li><strong>Legal:</strong> BitTorrent is a content-neutral protocol. Only stream or download content you have the rights to (e.g. public-domain media, Linux ISOs, openly licensed files).</li>
+        </ul>
+      </div>
+      <div class="btnrow">
+        <a class="btn" href="https://pub-c99e795f9a1d4801af575141a7b05e1f.r2.dev/aiinstructor/ashok/apks/simpleplayer-latest-debug.apk">Download APK (77 MB)</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="disclaimer">
+    <strong>Install notes for test builds:</strong> these APKs are debug-signed and installed outside Google Play, so Android will warn about "unknown apps" — you'll need to allow installs from your browser or file manager. They are provided for testing and feedback only, may contain bugs, crashes, or data loss between versions, and are not the final products. Install at your own risk. Nothing here collects your personal data; Artha's AI processing runs on-device.
+  </div>
+
+  <!-- OPEN SOURCE -->
+  <div class="section-label">// open source</div>
+  <h2>On GitHub</h2>
+  <p class="section-desc">Source-available projects — AI tooling, players, and Kotlin Multiplatform experiments.</p>
+  <div class="oss">
+    <a href="https://github.com/ashokvarmamatta/MEDHA" target="_blank" rel="noopener">MEDHA — On-Device AI Chat (Gemma 4 · LiteRT LM)</a>
+    <a href="https://github.com/ashokvarmamatta/ZeroClawAndroid" target="_blank" rel="noopener">ZeroClawAndroid — 24/7 AI Agent Daemon</a>
+    <a href="https://github.com/ashokvarmamatta/Chitra" target="_blank" rel="noopener">Chitra KMP — Compose Multiplatform (3 platforms)</a>
+    <a href="https://github.com/ashokvarmamatta/WeatherShow-KMP" target="_blank" rel="noopener">WeatherShow KMP — Cross-platform Weather</a>
+    <a href="https://github.com/ashokvarmamatta/videoplayer2" target="_blank" rel="noopener">ProPlayer — Compose Video Player</a>
+    <a href="https://github.com/ashokvarmamatta/ANTAR" target="_blank" rel="noopener">ANTAR — Device Analytics</a>
+  </div>
+
+  <footer>
+    Matta Ashok Varma · Android dev &rarr; on-device AI · learning in public &nbsp;·&nbsp; <a href="/">ashokvarma.dev</a>
+  </footer>
+
+</div>
+</body>
+</html>
