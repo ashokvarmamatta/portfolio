@@ -71,7 +71,7 @@
     {
       "id": "weatherkmp",
       "name": "WeatherShow KMP",
-      "description": "Cross-platform weather application built with Kotlin Multiplatform, sharing business logic across Android, iOS, and Web while maintaining native UI performance.",
+      "description": "Cross-platform weather application built with Kotlin Multiplatform, sharing business logic across Android, iOS and Web targets while maintaining native UI performance. Web deployed to Vercel; iOS build verified on simulator.",
       "tech": ["Kotlin Multiplatform", "Compose Multiplatform", "KMP", "Ktor"],
       "repo": "https://github.com/ashokvarmamatta/WeatherShow-KMP",
       "demo": "https://weather-show-kmp.vercel.app",
@@ -144,7 +144,7 @@
       "id": "btech",
       "degree": "B.Tech — Electronics & Communication Engineering",
       "institution": "Institute of Aeronautical Engineering",
-      "years": "2026",
+      "years": "2025",
       "notes": "First Class"
     }
   ],

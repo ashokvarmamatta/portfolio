@@ -6,6 +6,16 @@
 <style>
 @page { margin: 0; size: A4; }
 @media print { body { -webkit-print-color-adjust: exact; zoom: 0.92; } }
+
+/* Keep blocks whole across page boundaries (print + PDF export). */
+.section-title, .exp-header, .edu-header {
+  break-after: avoid; page-break-after: avoid;
+}
+.proj-block, .skill-row, .edu-header, .exp-header, li {
+  break-inside: avoid; page-break-inside: avoid;
+}
+.proj-block { orphans: 3; widows: 3; }
+
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
@@ -163,7 +173,7 @@ li strong { color: #111; }
   <span class="edu-school">Institute of Aeronautical Engineering</span>
   <span class="edu-loc">Hyderabad, India</span>
 </div>
-<div class="edu-degree">Bachelor of Technology, Electronics &amp; Communication Engineering &nbsp;|&nbsp; 2026</div>
+<div class="edu-degree">Bachelor of Technology, Electronics &amp; Communication Engineering &nbsp;|&nbsp; 2025</div>
 
 </body>
 </html>
