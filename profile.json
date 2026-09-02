@@ -1,10 +1,10 @@
 {
   "name": "Matta Ashok Varma",
-  "title": "Senior Android Developer",
+  "title": "Android Developer",
   "tagline": "Building high-performance native apps with Kotlin, Compose & KMP",
   "bio": {
-    "short": "Senior Android Developer specializing in Kotlin, Jetpack Compose, and Kotlin Multiplatform. 4+ years building production apps with clean architecture, on-device AI, and hardware integration.",
-    "long": "Results-driven Senior Android Developer with extensive expertise in modern Android ecosystems, utilizing Kotlin, Jetpack Compose, Kotlin Multiplatform (KMP), and Koin to build scalable applications. Specializes in hardware integration, deep Image Processing, and background processing architectures. Passionate about Clean Architecture, memory optimization, and leveraging Generative AI tools to accelerate development pipelines. Proven track record of migrating legacy XML systems, resolving complex crash patterns, scaling cloud assets via Cloudflare R2, and architecting custom on-device AI daemons and automation scrapers."
+    "short": "Android Developer specializing in Kotlin, Jetpack Compose, and Kotlin Multiplatform. 4+ years building production apps with clean architecture, on-device AI, and hardware integration.",
+    "long": "Results-driven Android Developer with extensive expertise in modern Android ecosystems, utilizing Kotlin, Jetpack Compose, Kotlin Multiplatform (KMP), and Koin to build scalable applications. Specializes in hardware integration, deep Image Processing, and background processing architectures. Passionate about Clean Architecture, memory optimization, and leveraging Generative AI tools to accelerate development pipelines. Proven track record of migrating legacy XML systems, resolving complex crash patterns, scaling cloud assets via Cloudflare R2, and architecting custom on-device AI daemons and automation scrapers."
   },
   "location": "Hyderabad, India",
   "avatar": "https://avatars.githubusercontent.com/u/138178952?v=4",
