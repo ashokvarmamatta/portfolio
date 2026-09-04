@@ -1,0 +1,20 @@
+{
+  // Explicit config so `wrangler deploy` does NOT run its framework-setup wizard.
+  //
+  // Left to itself, wrangler wanted to rewrite vite.config.js, add its plugin,
+  // overwrite the "deploy" npm script (which is what publishes to GitHub Pages),
+  // and set not_found_handling to "single-page-application". That last one is the
+  // one that matters: this is a multi-page static site, not an SPA, so SPA
+  // handling would serve index.html with a 200 for every missing URL. Soft 404s
+  // are worse than real ones - a crawler indexes the same page under every wrong
+  // path, and the canonical work done here fights it.
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-09-03",
+  "observability": { "enabled": true },
+  "assets": {
+    "directory": "./dist",
+    // serve dist/404.html with a real 404 status
+    "not_found_handling": "404-page"
+  }
+}

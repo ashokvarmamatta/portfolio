@@ -21,6 +21,9 @@ import { resolve } from 'path'
 // (the privacy-policy URL on the Play listings) among them. `public/` is the
 // single source for those pass-through files; Vite copies it into dist/ verbatim.
 export default defineConfig({
+  // wrangler edits this array when it configures a framework; an explicit
+  // empty one means it has something to find instead of erroring out.
+  plugins: [],
   root: 'src',
   publicDir: resolve(__dirname, 'public'),
   build: {
