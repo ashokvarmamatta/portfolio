@@ -1,0 +1,241 @@
+/* Layout and components. Colour comes only from tokens.css. */
+*{box-sizing:border-box;margin:0;padding:0}
+html{color-scheme:dark light}
+body{background:var(--surface);color:var(--on-surface);font-family:var(--sans);
+  font-variation-settings:"opsz" 14;
+  line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:920px;margin:0 auto;padding:0 24px}
+a{color:inherit}
+
+/* ---------- top app bar ---------- */
+.bar{background:var(--surface-container);position:sticky;top:0;z-index:20}
+.bar .wrap{display:flex;align-items:center;gap:18px;height:64px}
+.brand{font-family:var(--mono);font-size:13px;color:var(--on-surface-variant)}
+.bar nav{margin-left:auto;display:flex;gap:24px;font-size:14px;color:var(--on-surface-variant)}
+.bar nav a{text-decoration:none}
+.bar nav a:hover{color:var(--on-surface)}
+/* M3 assist chip: 32dp, 8dp corner, outlined */
+.avail{font-size:13px;color:var(--on-secondary-container);background:var(--secondary-container);
+  height:32px;display:inline-flex;align-items:center;padding:0 14px;border-radius:var(--r-sm);
+  white-space:nowrap}
+/* M3 icon button: 40dp target, full round, state layer on hover */
+.icon{width:40px;height:40px;border:0;border-radius:var(--r-full);background:transparent;
+  color:var(--on-surface-variant);cursor:pointer;display:grid;place-items:center;flex:none}
+
+header{padding:56px 0 44px}
+.idrow{display:flex;align-items:center;gap:22px;margin-bottom:22px}
+.photo{width:88px;height:88px;border-radius:var(--r-full);object-fit:cover;flex-shrink:0}
+/* M3 display-small / headline-large: weight 400, tight tracking */
+h1{font-size:44px;line-height:1.1;letter-spacing:-1px;font-weight:500;color:var(--on-surface);
+  font-variation-settings:"opsz" 144,"wdth" 100}   /* Roboto Flex optical size for display */
+.role{font-size:14px;color:var(--on-surface-variant);margin-top:8px;letter-spacing:.1px}
+.lede{font-size:16px;color:var(--on-surface-variant);max-width:64ch;margin-bottom:14px}
+.lede:first-of-type{font-size:21px;line-height:1.45;color:var(--on-surface);margin-bottom:18px;
+  font-variation-settings:"opsz" 32}
+.lede b{color:var(--on-surface);font-weight:500}
+
+/* ---------- M3 buttons: 40dp tall, full round, 24dp padding, label-large ---------- */
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
+.btn{height:40px;display:inline-flex;align-items:center;justify-content:center;
+  padding:0 24px;border-radius:var(--r-full);font-size:14px;font-weight:500;
+  letter-spacing:.1px;line-height:1;                 /* body line-height 1.6 was
+     pushing the label off-centre inside the 40dp pill */
+  text-decoration:none;border:1px solid var(--outline);color:var(--primary);
+  background:transparent;transition:background var(--mo-effect) var(--ease)}
+.btn.p{background:var(--primary);color:var(--on-primary);border-color:transparent}
+
+/* ---------- cards: tonal elevation only, no shadow, no custom colour ---------- */
+.impact{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:40px 0 8px}
+.impact div{background:var(--surface-container-low);padding:20px 18px;border-radius:var(--r-m);
+  display:flex;flex-direction:column;gap:8px}
+/* .raise declares a 1px transparent border; without box-sizing already set
+   globally these would grow by 2px on hover. It is set, so they do not. */
+/* line-height must be tight here - inheriting 1.6 on 26px text opened a 42px
+   line box and looked like a broken gap */
+.impact .n{font-size:28px;font-weight:400;color:var(--on-surface);letter-spacing:-.5px;line-height:1.05}
+.impact .l{font-size:12.5px;color:var(--on-surface-variant);line-height:1.4}
+
+section{padding:44px 0}
+section + section{border-top:1px solid var(--outline-variant)}
+h2{font-size:12px;color:var(--on-surface-variant);text-transform:uppercase;
+  margin-bottom:8px;display:flex;align-items:baseline;gap:8px;font-weight:500}
+h2 > span{letter-spacing:1.6px}
+.sub{color:var(--on-surface-variant);font-size:14px;margin-bottom:26px;max-width:62ch}
+
+.job{background:var(--surface-container-low);border-radius:var(--r-n);padding:22px 24px;
+  margin-bottom:10px}
+.job-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px}
+.job-h h3{font-size:18px;font-weight:500;letter-spacing:0}
+/* M3 suggestion chips */
+.scale,.owner{height:26px;display:inline-flex;align-items:center;padding:0 11px;
+  border-radius:var(--r-sm);font-size:12px;font-weight:500;letter-spacing:.1px}
+.scale{color:var(--on-tertiary-container);background:var(--tertiary-container)}
+.owner{margin-left:auto;color:var(--on-surface-variant);border:1px solid var(--outline-variant)}
+.owner.built{color:var(--on-secondary-container);background:var(--secondary-container);border-color:transparent}
+.owner.inherit{color:var(--on-surface-variant);background:var(--surface-container-high);border-color:transparent}
+.job p{color:var(--on-surface-variant);font-size:14.5px;margin:10px 0 0}
+.job .res{color:var(--on-surface)}
+.job .res b{color:var(--on-surface);font-weight:500}
+.stack{font-family:var(--mono);font-size:11.5px;color:var(--outline);margin-top:14px}
+.jl{display:flex;gap:18px;margin-top:12px;font-size:13.5px;font-weight:500}
+.jl{gap:6px}
+/* Links inside a card are the only genuinely interactive thing in there, and
+   they had a text-decoration:underline hover — a plain-HTML affordance, not an
+   M3 one. They are targets now: a state layer with a real shape, and enough
+   padding for the wash to be visible. The negative margin cancels that padding
+   so the row sits exactly where it did before. */
+.jl-a{color:var(--primary);text-decoration:none;display:inline-flex;align-items:center;gap:5px;
+  padding:7px 10px;margin:-7px -4px;border-radius:var(--r-s)}
+
+.prob{background:var(--surface-container-lowest);border-radius:var(--r-m);
+  padding:18px 20px;margin-bottom:10px}
+.prob h4{font-size:16px;font-weight:500;margin-bottom:8px}
+.prob p{color:var(--on-surface-variant);font-size:14px}
+.prob .tag{font-family:var(--mono);font-size:11px;color:var(--outline);margin-top:10px}
+
+.sk{display:grid;grid-template-columns:150px 1fr;gap:14px 24px;font-size:14px;align-items:baseline}
+.sk dt{font-size:11.5px;color:var(--outline);text-align:right;font-weight:500;
+  text-transform:uppercase;letter-spacing:.8px;line-height:1.7}
+.sk dd{color:var(--on-surface)}
+
+footer{padding:36px 0 64px;color:var(--on-surface-variant);font-size:13.5px;
+  border-top:1px solid var(--outline-variant);line-height:1.7}
+footer .wrap > *{max-width:70ch}
+.tokline{font-size:12.5px;color:var(--outline);margin-top:18px;line-height:1.6}
+/* This line used to be an inline style:color:var(--dim2) - a variable that only
+   exists on the radar page. On the home page the declaration was invalid at
+   computed-value time, so the colour silently fell back to inherited and the
+   line was never actually dimmed. Colour belongs in a stylesheet, resolving
+   through a token, which is also the only way that bug becomes impossible. */
+.foot-note{color:var(--outline)}
+footer p + p{margin-top:2px}
+/* ============================================================================
+   Adaptive layout — phone, tablet, desktop, and a notched phone in landscape.
+
+   What was here before was one breakpoint at 720px, and its first rule was
+   `.bar nav{display:none}`. Below 720px the navigation did not adapt, it
+   VANISHED — so on every phone and small tablet the site had no way to reach
+   Work, Apps or Stack except scrolling. Hiding is not a responsive strategy;
+   it is the absence of one.
+
+   The approach now:
+     - type is fluid (clamp), so nothing jumps at a threshold
+     - the nav degrades to a scrollable strip rather than disappearing
+     - breakpoints sit where THIS content actually breaks, not at device names
+   ============================================================================ */
+
+/* --- fluid type: no step changes, so there is no width where it looks wrong --- */
+h1{font-size:clamp(28px, 6.2vw, 44px);letter-spacing:clamp(-1px, -.12vw, -.4px)}
+.lede:first-of-type{font-size:clamp(17px, 2.4vw, 21px)}
+.impact .n{font-size:clamp(22px, 3.4vw, 28px)}
+
+/* --- long unbreakable tokens (package names, mono stack lines) must never be
+       the reason a page scrolls sideways --- */
+.stack, .spec span, .jl-a, code{overflow-wrap:anywhere}
+img, svg{max-width:100%;height:auto}
+
+/* --- safe areas: needs viewport-fit=cover in the meta tag to be non-zero.
+       Without this a notched phone in landscape puts text under the cutout. --- */
+.wrap{padding-left:max(24px, env(safe-area-inset-left));
+      padding-right:max(24px, env(safe-area-inset-right))}
+
+/* --- tablet / small laptop --- */
+@media(max-width:900px){
+  /* the availability chip is the longest, least essential thing in the bar,
+     so it is the first to go when the bar gets tight */
+  .avail{display:none}
+}
+
+@media(max-width:760px){
+  .impact{grid-template-columns:repeat(2,1fr)}
+  .sk{grid-template-columns:1fr;gap:2px 0}
+  .sk dt{text-align:left;margin-top:10px}
+  section{padding:34px 0}
+  /* the ownership chip is right-aligned by margin-left:auto; once the header
+     wraps it would sit alone on its own line hugging the right edge */
+  .owner{margin-left:0}
+}
+
+@media(max-width:640px){
+  /* The nav stays. It becomes a scrollable strip - reachable, just not all
+     visible at once. scrollbar-width:none because a strip this short with a
+     visible scrollbar looks broken rather than scrollable. */
+  .bar .wrap{gap:12px}
+  .bar nav{gap:18px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;
+    white-space:nowrap;margin-left:auto;-webkit-overflow-scrolling:touch}
+  .bar nav::-webkit-scrollbar{display:none}
+  .brand{flex:none}
+  .job, .app-card{padding:18px 16px}
+  .prob{padding:16px 16px}
+  .wrap{padding-left:max(16px, env(safe-area-inset-left));
+        padding-right:max(16px, env(safe-area-inset-right))}
+  header{padding:36px 0 32px}
+}
+
+@media(max-width:520px){
+  /* photo beside a 44px headline does not fit; stack them */
+  .idrow{flex-direction:column;align-items:flex-start;gap:14px}
+  .photo{width:64px;height:64px}
+  .impact{grid-template-columns:1fr 1fr;gap:8px}
+  .links{gap:6px}
+  .btn{padding:0 18px}
+}
+
+@media(max-width:380px){
+  .impact{grid-template-columns:1fr}
+  .btn{width:100%}
+}
+
+/* --- touch: Material's minimum target is 48dp. A 14px nav link in a 64px bar
+       is a ~20px target with a mouse, which is fine, and a miss with a thumb. --- */
+@media (pointer: coarse){
+  .bar nav a{padding:14px 0;display:inline-block}
+  .jl-a{padding:11px 12px;margin:-11px -6px}
+  .faq summary{padding:18px 0}
+}
+
+/* --- very wide: the 920px column is deliberate (measure beats filling the
+       screen), so large displays get breathing room, not a wider column. --- */
+@media(min-width:1600px){
+  .wrap{max-width:1000px}
+}
+
+/* ---------- FAQ ----------
+   These exist because the page emits FAQPage structured data, and structured
+   data that describes content a visitor cannot see is a Google policy
+   violation, not a clever shortcut. The markup is <details>, so the answers
+   are in the DOM (and therefore extractable and indexable) whether or not the
+   disclosure is open. `name="faq"` makes them an exclusive accordion natively
+   — no JavaScript. */
+.faq{background:var(--surface-container-low);border-radius:var(--r-m);
+  padding:0 20px;margin-bottom:8px}
+.faq summary{list-style:none;cursor:pointer;padding:16px 0;font-size:15.5px;
+  font-weight:500;color:var(--on-surface);display:flex;align-items:center;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";margin-left:auto;flex:none;width:9px;height:9px;
+  border-right:1.8px solid var(--on-surface-variant);
+  border-bottom:1.8px solid var(--on-surface-variant);
+  transform:rotate(45deg) translate(-2px,-2px);
+  transition:transform var(--mo-effect) var(--ease)}
+.faq[open] summary::after{transform:rotate(225deg) translate(-2px,-2px)}
+.faq p{color:var(--on-surface-variant);font-size:14.5px;padding:0 0 18px;max-width:70ch}
+
+/* ---------- the trailing arrow ----------
+   A wrapped element rather than a ::after, because .state already uses ::after
+   for the wash and one element gets one ::after. Wrapping is also what lets it
+   move independently of the label. */
+.ar{font-style:normal;font-size:.88em;line-height:1;display:inline-block;margin-left:4px;
+  transition:transform var(--dur-fast,350ms) var(--curve-expressive,cubic-bezier(.38,1.21,.22,1))}
+/* it points up-and-right, so that is the direction it travels */
+.jl-a:hover .ar,
+.btn:hover .ar,
+.raise:hover .ar{transform:translate(2px,-2px)}
+
+/* The GitHub tiles are whole-card links. They had a background swap only; the
+   card treatment plus a pointer cursor is what they should always have had. */
+.gh a{border:1px solid transparent}
+.gh a:hover{background:var(--surface-container-low)}   /* the wash does the work now */
+
+/* Deliberately NOT interactive: .scale, .owner, .stack and .spec are labels,
+   not controls. A state layer on them would advertise a click that does not
+   exist, which is worse than looking static. */

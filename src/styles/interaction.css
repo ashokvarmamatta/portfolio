@@ -1,0 +1,238 @@
+/* ============================================================================
+   Interaction and motion.
+
+   Every curve, duration and opacity below is taken from the Material 3 study
+   (`windows ui material reseach`) — the bezier control points are the literal
+   values out of `animationCurves`, and the state-layer model is the four-state
+   one from `StateOverlay.qml`, not the three-state one most write-ups show.
+   ============================================================================ */
+
+:root {
+  /* --- easing: literal control points from animationCurves --- */
+  --curve-standard:        cubic-bezier(.2, 0, 0, 1);
+  --curve-standard-accel:  cubic-bezier(.3, 0, 1, 1);
+  --curve-standard-decel:  cubic-bezier(0, 0, 0, 1);
+  --curve-emphasized-accel:cubic-bezier(.3, 0, .8, .15);
+  --curve-emphasized-decel:cubic-bezier(.05, .7, .1, 1);
+  /* the expressive spatial curves overshoot on purpose - y1 > 1 */
+  --curve-expressive:      cubic-bezier(.38, 1.21, .22, 1);
+  --curve-expressive-fast: cubic-bezier(.42, 1.67, .21, .9);
+  --curve-effects:         cubic-bezier(.34, .8, .34, 1);
+
+  /* --- durations, as extracted --- */
+  --dur-effects: 200ms;   /* expressiveEffectsDuration */
+  --dur-fast:    350ms;   /* expressiveFastSpatialDuration */
+  --dur-default: 500ms;   /* expressiveDefaultSpatialDuration */
+  --dur-enter:   400ms;   /* elementMoveEnter */
+  --dur-exit:    200ms;   /* elementMoveExit */
+  --dur-resize:  300ms;   /* elementResize */
+
+  /* --- state layer opacities: FOUR states, drag included --- */
+  --state-hover: .08;
+  --state-focus: .10;
+  --state-press: .10;
+  --state-drag:  .16;
+}
+
+/* ---------------------------------------------------------------------------
+   State layers.
+
+   The spec's point, and the thing I got wrong first: a state is a SEPARATE
+   overlay that inherits its host's corner radii — not a background swap. A
+   background swap loses the surface tone underneath and squares off a rounded
+   corner on some browsers. `inherit` on border-radius is what keeps the wash
+   the same shape as the thing it washes.
+   --------------------------------------------------------------------------- */
+.state { position: relative; isolation: isolate; }
+.state::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;          /* never square off the host */
+  background: currentColor;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-effects) var(--curve-effects);
+  z-index: 1;
+}
+.state:hover::after      { opacity: var(--state-hover); }
+.state:focus-visible::after { opacity: var(--state-focus); }
+.state:active::after     { opacity: var(--state-press); }
+.state[data-dragging]::after { opacity: var(--state-drag); }
+
+
+/* ---------------------------------------------------------------------------
+   Interactive surfaces — `.state.raise`
+
+   What I got wrong the first time: I shipped the state layer alone and called
+   the cards done. But M3's hovered-card state is TWO changes, not one —
+   the 8% state layer AND elevation level 1 -> level 2. An 8% wash on its own
+   is a real change that nobody can feel, which is exactly how it landed.
+
+   The second problem is that "elevation" in M3 dark is mostly TONAL, and a
+   drop shadow against a #141313 surface is very nearly invisible. So a shadow
+   alone would have fixed the light theme and left dark exactly as flat as it
+   was. Three cues, each carrying a different theme:
+
+     outline    transparent -> --outline-variant   reads in BOTH
+     lift       translateY(-2px), expressive curve  reads in both (motion)
+     shadow     level 1 -> level 2                  carries the light theme
+
+   The border is declared transparent at rest rather than added on hover, so
+   the card never changes size when it lights up.
+   --------------------------------------------------------------------------- */
+.raise {
+  border: 1px solid transparent;
+  transition: border-color var(--dur-effects) var(--curve-effects),
+              box-shadow   var(--dur-effects) var(--curve-effects),
+              transform    var(--dur-fast)    var(--curve-expressive);
+  will-change: transform;
+}
+.raise:hover,
+.raise:focus-within {
+  border-color: var(--outline-variant);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px color-mix(in srgb, var(--scrim) 26%, transparent);
+}
+/* pressing settles it back down — the press state is lower than hover, not
+   higher, which is what makes it read as a press rather than a second hover */
+.raise:active {
+  transform: translateY(0);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--scrim) 30%, transparent);
+  transition-duration: var(--dur-exit);
+}
+
+/* A card is a surface, not a button: no pointer cursor unless it really is
+   clickable. `.raise.clickable` is for the ones that are. */
+.raise.clickable { cursor: pointer; }
+
+@media (prefers-reduced-motion: reduce) {
+  .raise:hover, .raise:focus-within, .raise:active { transform: none; }
+}
+
+/* Rows in a list get the wash and the outline but no lift — a whole column of
+   things jumping 2px as the pointer runs down it is noise, not feedback. */
+.rowstate {
+  border: 1px solid transparent;
+  border-radius: var(--r-s);
+  transition: border-color var(--dur-effects) var(--curve-effects);
+}
+.rowstate:hover { border-color: var(--outline-variant); }
+
+/* keep real content above the wash */
+.state > * { position: relative; z-index: 2; }
+
+/* --- focus ring, M3 style: 3px offset ring, never a browser outline --- */
+:where(a, button, [tabindex]):focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: inherit;
+}
+
+/* ---------------------------------------------------------------------------
+   Motion
+   --------------------------------------------------------------------------- */
+
+/* clickBounce — 400ms on the expressive spatial curve, which overshoots.
+   This is the one place the "expressive" half of M3 Expressive shows up. */
+.btn, .icon { transition: transform var(--dur-enter) var(--curve-expressive); }
+.btn:active, .icon:active { transform: scale(.96); }
+
+/* elementMoveEnter / elementMoveExit — asymmetric on purpose: things arrive
+   slowly and decelerate, and leave quickly and accelerate. */
+@keyframes elementMoveEnter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+.reveal {
+  animation: elementMoveEnter var(--dur-enter) var(--curve-emphasized-decel) both;
+}
+
+/* elementResize — 300ms emphasized, for anything that changes height */
+.resizes { transition: height var(--dur-resize) var(--curve-standard),
+                        max-height var(--dur-resize) var(--curve-standard); }
+
+/* theme change: an effects-duration cross-fade, not a spatial one */
+body { transition: background-color var(--dur-effects) var(--curve-effects),
+                    color var(--dur-effects) var(--curve-effects); }
+
+/* shadows: the study's rule is blur roughly twice the offset, against the
+   shadow token. Used sparingly - M3 dark prefers tonal elevation. */
+.elev-1 { box-shadow: 0 1px 2px color-mix(in srgb, var(--scrim) 30%, transparent); }
+.elev-2 { box-shadow: 0 2px 4px color-mix(in srgb, var(--scrim) 30%, transparent); }
+.elev-3 { box-shadow: 0 4px 8px color-mix(in srgb, var(--scrim) 30%, transparent); }
+
+/* scroll — 200ms standardDecel */
+html { scroll-behavior: smooth; }
+
+/* --------------------------------------------------------------------------
+   Anyone who has asked the OS to stop moving things gets a still page. This is
+   not optional politeness; vestibular triggers are an accessibility failure.
+   -------------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .btn:active, .icon:active { transform: none; }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll edge fades — ScrollEdgeFade.qml
+
+   Three rules from the spec, and the middle one is the one people skip:
+
+     fadeSize: darkmode ? 40 : 20      a fade to black over dark content needs
+                                       more distance to read than a fade to white
+     shown: !atYBeginning              each edge appears ONLY when there is
+                                       content past it, so a short list has none
+     Behavior on opacity: 200ms        elementMoveFast, not an instant toggle
+
+   The gradients are painted by the wrapper, not the scroller, so they stay put
+   while the content moves under them.
+   --------------------------------------------------------------------------- */
+:root            { --fade-size: 40px; }  /* dark */
+:root[data-theme="light"] { --fade-size: 20px; }
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) { --fade-size: 20px; }
+}
+
+.scrollfade { position: relative; }
+.scrollfade::before,
+.scrollfade::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0;
+  height: var(--fade-size);
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0;
+  transition: opacity var(--dur-exit) var(--curve-effects);
+}
+.scrollfade::before {
+  top: 0;
+  background: linear-gradient(to bottom, var(--surface) 0%, transparent 100%);
+}
+.scrollfade::after {
+  bottom: 0;
+  background: linear-gradient(to top, var(--surface) 0%, transparent 100%);
+}
+/* only shown when there is actually more in that direction */
+.scrollfade[data-top="1"]::before    { opacity: 1; }
+.scrollfade[data-bottom="1"]::after  { opacity: 1; }
+
+.scrollfade > .scroller {
+  max-height: 62vh;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--outline-variant) transparent;
+  padding-right: 4px;
+}
+.scrollfade > .scroller::-webkit-scrollbar { width: 8px; }
+.scrollfade > .scroller::-webkit-scrollbar-thumb {
+  background: var(--outline-variant); border-radius: var(--r-full);
+}
+.scrollfade > .scroller::-webkit-scrollbar-track { background: transparent; }

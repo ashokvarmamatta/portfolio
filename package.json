@@ -1,0 +1,17 @@
+{
+  "name": "ashokvarma-portfolio",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "description": "ashokvarma.dev \u2014 Android developer portfolio. Material 3 tokens, no framework.",
+  "scripts": {
+    "dev": "vite",
+    "build": "node check-css-vars.js && vite build",
+    "deploy": "npm run build && node deploy.js",
+    "preview": "vite preview",
+    "check": "node check-css-vars.js"
+  },
+  "devDependencies": {
+    "vite": "^5.4.10"
+  }
+}

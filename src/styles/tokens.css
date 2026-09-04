@@ -1,0 +1,140 @@
+/* ============================================================================
+   Material 3 design tokens.
+
+   DARK  — extracted byte-for-byte from a Quickshell/QML shell's Appearance.qml
+           (see the `windows ui material reseach` study). Not hand-picked.
+   LIGHT — derived from that scheme's own inverse-* and *-fixed roles, which is
+           how M3 defines the pairing:
+             dark inverse-primary  -> light primary
+             dark primary-fixed    -> light primary-container
+             dark on-primary-fixed -> light on-primary-container
+           The neutral surface ladder uses the standard M3 tone steps for the
+           same hue family.
+
+   Nothing outside this file may declare a colour. Every surface, text and
+   border in the site resolves through a role below.
+   ============================================================================ */
+
+:root {
+  /* shape — the extracted rounding scale */
+  --r-xs: 2px;  --r-s: 6px;   --r-sm: 8px;  --r-m: 12px;
+  --r-n: 17px;  --r-l: 23px;  --r-xl: 30px; --r-full: 999px;
+
+  /* motion — extracted durations and the M3 standard easing */
+  --mo-effect: 200ms;
+  --mo-spatial: 350ms;
+  --ease: cubic-bezier(.2, 0, 0, 1);
+
+  --mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --sans: "Roboto Flex", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* ---------------------------------------------------------------- dark ---- */
+:root,
+:root[data-theme="dark"] {
+  --surface: #141313;
+  --surface-container-lowest: #0f0e0e;
+  --surface-container-low: #1c1b1c;
+  --surface-container: #201f20;
+  --surface-container-high: #2b2a2a;
+  --surface-container-highest: #363435;
+  --on-surface: #e6e1e1;
+  --on-surface-variant: #cbc5ca;
+  --outline: #948f94;
+  --outline-variant: #49464a;
+  --primary: #cbc4cb;
+  --on-primary: #322f34;
+  --primary-container: #2d2a2f;
+  --on-primary-container: #bcb6bc;
+  --secondary-container: #4d4b4d;
+  --on-secondary-container: #ece6e9;
+  --tertiary-container: #31292b;
+  --on-tertiary-container: #c1b4b7;
+  --scrim: #000;
+
+  /* --- accent: the Android green the radar page is built around. It was 13
+     hardcoded hex values in radar.css, which is why that page ignored the
+     theme switcher completely. Now it is a role like everything else. --- */
+  --accent: #3ddc84;
+  --on-accent: #00391c;
+  --accent-container: #0e1a13;
+  --accent-outline: #1d3a2a;
+
+  /* --- severity, for the radar's problem chips. Same reason: these were
+     inline styles on 77 elements. --- */
+  --sev-crash: #f87171;        --sev-crash-bg: #2a1214;
+  --sev-perf: #60a5fa;         --sev-perf-bg: #0f1c2e;
+  --sev-behaviour: #c084fc;    --sev-behaviour-bg: #1e1330;
+  --sev-build: #fbbf24;        --sev-build-bg: #241d0c;
+}
+
+/* --------------------------------------------------------------- light ---- */
+:root[data-theme="light"] {
+  --surface: #fdf8fd;
+  --surface-container-lowest: #ffffff;
+  --surface-container-low: #f7f2f7;
+  --surface-container: #f1ecf1;
+  --surface-container-high: #ebe6eb;
+  --surface-container-highest: #e6e1e6;
+  --on-surface: #1d1b1e;
+  --on-surface-variant: #49454b;
+  --outline: #7a757e;
+  --outline-variant: #cbc5ce;
+  --primary: #615d63;
+  --on-primary: #ffffff;
+  --primary-container: #e7e0e7;
+  --on-primary-container: #1d1b1f;
+  --secondary-container: #e5e0e4;
+  --on-secondary-container: #1c1b1d;
+  --tertiary-container: #f0dde1;
+  --on-tertiary-container: #31111d;
+  --scrim: #000;
+
+  /* accent and severity, re-toned for a light ground: the dark values are
+     bright-on-dark and fail contrast the moment the surface goes white. */
+  --accent: #0f6b3c;
+  --on-accent: #ffffff;
+  --accent-container: #c6f2d8;
+  --accent-outline: #8fd6ae;
+
+  --sev-crash: #a4232a;        --sev-crash-bg: #ffdad6;
+  --sev-perf: #0b4a8f;         --sev-perf-bg: #d8e6ff;
+  --sev-behaviour: #6b21a8;    --sev-behaviour-bg: #f0dcff;
+  --sev-build: #7a4f00;        --sev-build-bg: #ffe8b0;
+}
+
+/* follow the OS until the visitor chooses */
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --surface: #fdf8fd;
+    --surface-container-lowest: #ffffff;
+    --surface-container-low: #f7f2f7;
+    --surface-container: #f1ecf1;
+    --surface-container-high: #ebe6eb;
+    --surface-container-highest: #e6e1e6;
+    --on-surface: #1d1b1e;
+    --on-surface-variant: #49454b;
+    --outline: #7a757e;
+    --outline-variant: #cbc5ce;
+    --primary: #615d63;
+    --on-primary: #ffffff;
+    --primary-container: #e7e0e7;
+    --on-primary-container: #1d1b1f;
+    --secondary-container: #e5e0e4;
+    --on-secondary-container: #1c1b1d;
+    --tertiary-container: #f0dde1;
+    --on-tertiary-container: #31111d;
+
+    /* accent and severity, re-toned for a light ground: the dark values are
+       bright-on-dark and fail contrast the moment the surface goes white. */
+    --accent: #0f6b3c;
+    --on-accent: #ffffff;
+    --accent-container: #c6f2d8;
+    --accent-outline: #8fd6ae;
+
+    --sev-crash: #a4232a;        --sev-crash-bg: #ffdad6;
+    --sev-perf: #0b4a8f;         --sev-perf-bg: #d8e6ff;
+    --sev-behaviour: #6b21a8;    --sev-behaviour-bg: #f0dcff;
+    --sev-build: #7a4f00;        --sev-build-bg: #ffe8b0;
+  }
+}
