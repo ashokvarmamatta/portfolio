@@ -5,7 +5,7 @@
 <title>Matta Ashok Varma - Resume</title>
 <style>
 @page { margin: 0; size: A4; }
-@media print { body { -webkit-print-color-adjust: exact; zoom: 0.84; } }
+@media print { body { -webkit-print-color-adjust: exact; zoom: 0.74; } }
 
 /* Keep blocks whole across page boundaries (print + PDF export). */
 .section-title, .exp-header, .edu-header {
@@ -90,10 +90,11 @@ li strong { color: #111; }
 <div class="section-title">TECHNICAL SKILLS</div>
 <div>
   <div class="skill-row"><span class="skill-label">Programming Languages</span><span class="skill-value">: Kotlin, Java, Python, C, SQL, HTML5</span></div>
-  <div class="skill-row"><span class="skill-label">Android & Frameworks</span><span class="skill-value">: Jetpack Compose, Material 3, KMP, Compose Multiplatform, Koin, Room DB, Coroutines & Flow, ExoPlayer/Media3, Ktor, Coil 3, CameraX, ML Kit, Firebase, WorkManager</span></div>
-  <div class="skill-row"><span class="skill-label">Architecture & Patterns</span><span class="skill-value">: Clean Architecture, MVVM, MVI, Offline-First, Repository Pattern, Use Cases</span></div>
-  <div class="skill-row"><span class="skill-label">AI & Cloud</span><span class="skill-value">: Gemma 4 (E2B/E4B), Google LiteRT LM, Gemini API, ComfyUI, Cloudflare R2, Google Maps SDK, HERE Maps SDK</span></div>
-  <div class="skill-row"><span class="skill-label">Tools & CI/CD</span><span class="skill-value">: Android Studio, Git, GitHub, Gradle, GitHub Actions (CI/CD), Figma, Claude Code, FFmpeg</span></div>
+  <div class="skill-row"><span class="skill-label">Android & Frameworks</span><span class="skill-value">: Jetpack Compose, Material 3, KMP, Compose Multiplatform, Hilt &amp; Koin (DI), Room DB, Coroutines &amp; Flow, StateFlow/SharedFlow, LiveData, Media3/ExoPlayer (HLS, DASH, RTSP), Google Cast, Retrofit &amp; OkHttp, Ktor, KotlinX Serialization, Jetpack Navigation, Coil 3, CameraX, ML Kit, WorkManager, KSP</span></div>
+  <div class="skill-row"><span class="skill-label">Firebase & Security</span><span class="skill-value">: Analytics, Crashlytics, Cloud Messaging (FCM), Remote Config, AdMob + UMP consent, AndroidX Biometric, R8/ProGuard, Google Maps &amp; HERE Maps SDK</span></div>
+  <div class="skill-row"><span class="skill-label">Testing & Architecture</span><span class="skill-value">: JUnit, MockK, Truth, Turbine, Robolectric, Espresso, Compose UI tests; Clean Architecture, MVVM, MVI, Offline-First, Repository Pattern</span></div>
+  <div class="skill-row"><span class="skill-label">AI & Cloud</span><span class="skill-value">: Gemma 4 (E2B/E4B), Google LiteRT LM, Gemini API, ComfyUI, Cloudflare R2</span></div>
+  <div class="skill-row"><span class="skill-label">Tools & CI/CD</span><span class="skill-value">: GitHub Actions (tag-triggered Gradle build &rarr; release APK &rarr; GitHub Release), Android Studio, Git, Gradle, Figma, Claude Code, FFmpeg</span></div>
 </div>
 
 <div class="section-title">WORK EXPERIENCE</div>
@@ -108,12 +109,14 @@ li strong { color: #111; }
   <li><strong>Performance & Stability:</strong> Resolved critical memory leaks and OutOfMemoryError crashes across media services by implementing bitmap recycling, lifecycle-aware coroutines, and safe surface tracking. Achieved <strong>99.4% crash-free rate</strong> and reduced ANR rate by <strong>38%</strong>.</li>
   <li><strong>On-Device AI in Production:</strong> Shipped real on-device ML features in production apps &mdash; ESRGAN super-resolution via <strong>LiteRT</strong> with GPU delegation (incl. TFLite&rarr;LiteRT migration for Android 15's 16 KB page-size mandate), <strong>ML Kit</strong> subject segmentation (background removal, portrait blur), and on-device image-labeling + OCR content search. Also built GenAI pipelines (Gemini API + ComfyUI) for server-side processing.</li>
   <li><strong>Hardware & Data Management:</strong> Designed offline-first Room DB schemas for heterogeneous data types. Engineered hardware-interfacing features for low-latency camera access, flash control, and microphone integration.</li>
+  <li><strong>Security, Release & CI/CD:</strong> Shipped <strong>biometric auth</strong> (BiometricPrompt with device-credential fallback) on a finance app, <strong>GDPR-style consent</strong> (Google UMP) portfolio-wide, R8/ProGuard hardening, <strong>FCM push</strong> and <strong>Remote Config</strong> flags. Automated <strong>GitHub Actions</strong> pipelines: tag-triggered Gradle build &rarr; release APK &rarr; published GitHub Release.</li>
 </ul>
 
 <div style="font-size: 9pt; font-weight: 600; color: #111; margin-top: 3px; margin-bottom: 2px;">Key Production Apps (Live on Google Play Store):</div>
 <ul>
   <li><strong>GPS Village Maps & Navigation:</strong> Reduced ANR rate by <strong>38%</strong> via GPS callback optimization, cut cold start by <strong>45%</strong> with lazy Koin DI, migrated 60% XML to Compose, integrated Google Maps + HERE Maps dual SDK. DAU increased <strong>2.4x</strong> post-optimization (Firebase Analytics + Play Console).</li>
   <li><strong>Transparent Live Wallpaper:</strong> Fixed Camera Busy crashes by resolving WallpaperService-Camera2 lifecycle conflicts &mdash; <strong>92% crash reduction</strong>. Reduced memory footprint by binding Glide + MediaPlayer to the service lifecycle and improved battery efficiency with frame-skip rendering logic. User retention improved <strong>1.8x</strong> (Firebase Analytics).</li>
+  <li><strong>Video Player (Media3):</strong> Local + adaptive streaming over <strong>HLS, DASH, RTSP</strong> with a MediaSessionService foreground player, Picture-in-Picture and Media3 Transformer editing. Implemented <strong>Google Cast</strong> for on-device files via an embedded local HTTP server so the receiver can stream media held only on the phone. Room library, Glance widget, Hilt DI.</li>
   <li><strong>QR & Barcode Scanner:</strong> Eliminated <strong>100%</strong> of scanner resource leaks via lifecycle-aware coroutines. Scan speed improved <strong>3x</strong> with thumbnail caching. APK size reduced by <strong>22%</strong> removing unused ML model binaries. Crash-free rate improved from 96.1% to <strong>99.4%</strong>.</li>
 </ul>
 
