@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Matta Ashok Varma&nbsp;— Android Developer | Kotlin, Compose, On-Device AI</title>
+<title>Matta Ashok Varma — Android Developer | Kotlin, Compose, On-Device AI</title>
+
+
 
 <meta name="description" content="Android developer in Hyderabad with 4 years building production apps in Kotlin and Jetpack Compose. Works on apps past 10M installs; ships on-device AI with ML Kit GenAI and Gemma 4. Open to Senior Android roles.">
 <meta name="author" content="Matta Ashok Varma">
@@ -135,7 +137,17 @@
         "biometric authentication",
         "GitHub Actions",
         "Gradle",
-        "Google Play release engineering"
+        "Google Play release engineering",
+        "adaptive layout",
+        "Android large screen support",
+        "WindowSizeClass",
+        "foldable devices",
+        "Android tablets",
+        "Compose Multiplatform desktop",
+        "Kotlin/Wasm",
+        "Android 17",
+        "targetSdk 37",
+        "edge-to-edge"
       ],
       "sameAs": [
         "https://github.com/ashokvarmamatta",
@@ -252,6 +264,14 @@
         },
         {
           "@type": "Question",
+          "name": "Does he build for tablets, foldables and other form factors?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Partly, and the honest split matters. Shipped: Chitra builds from one Kotlin codebase to Android, Desktop and Web through Compose Multiplatform, and three apps he works on already target SDK 37, where Android 17 removed the large-screen resizability opt-out. In progress: WindowSizeClass-driven adaptive layouts and fold-aware placement. Not yet built: Android TV, Wear OS and Android Auto."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "What on-device AI has he shipped?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -274,7 +294,7 @@
   <span class="brand">ashokvarma.dev</span>
   <nav>
     <a href="#work">Work</a><a href="#problems">Problems</a>
-    <a href="/apps.html">Apps</a><a href="#stack">Stack</a>
+    <a href="/apps.html">Apps</a><a href="#stack">Stack</a><a href="#next">Next</a>
   </nav>
   <span class="avail">Open to Senior Android roles</span>
   <button id="tt" class="icon state" aria-label="Toggle light and dark theme" title="Toggle theme">
@@ -467,10 +487,47 @@
     <dt>architecture</dt><dd>Clean Architecture · MVVM · MVI · Repository · Offline-first</dd>
     <dt>build</dt><dd>Gradle · GitHub Actions CI/CD · Play Console · JUnit · Espresso · Compose UI tests</dd>
     <dt>cross-platform</dt><dd>Kotlin Multiplatform · Compose Multiplatform</dd>
+    <dt>form factors</dt><dd>One Kotlin codebase building to <b>Android, Desktop (JVM) and Web (Wasm&nbsp;+&nbsp;JS)</b>&nbsp;&mdash; that is Chitra, shipped · three apps already on <b>targetSdk&nbsp;37</b>, where Android&nbsp;17 removed the large-screen resizability opt-out · edge-to-edge, inset-stable Compose · this site, adaptive from 320px up</dd>
   </dl>
 </div></section>
 
 
+
+<section id="next"><div class="wrap">
+  <h2><span>What I am learning next</span></h2>
+  <p class="sub">An honest list. These are gaps I am closing, not things I have shipped&nbsp;&mdash;
+    if you interview me on them, that is the answer you will get.</p>
+
+  <div class="prob state raise">
+    <h4>Adaptive layout as a build gate, not a nicety</h4>
+    <p>From targetSdk&nbsp;37 there is no opt-out. Android&nbsp;17 ignores orientation, aspect-ratio and
+      resizability restrictions on any display with a smallest width of 600dp or more, and the manifest
+      escape hatch that existed on Android&nbsp;16 is gone&nbsp;&mdash; so every screen has to survive an
+      arbitrary window size whether or not it was designed to. Three of the apps I work on already
+      target&nbsp;37. The work is moving them onto layouts keyed on <b>window size class, width first
+      then height</b>, rather than a portrait lock the platform no longer honours.</p>
+    <p class="tag">WindowSizeClass · NavigationSuiteScaffold · ListDetailPaneScaffold · Android 17 windowing</p>
+  </div>
+
+  <div class="prob state raise">
+    <h4>Foldables, and the assumption that breaks on them</h4>
+    <p>Trifolds and landscape foldables open <b>landscape-first</b>&nbsp;&mdash; rotation_0 is landscape&nbsp;&mdash;
+      so &ldquo;natural orientation is portrait&rdquo; is wrong on exactly the devices where layout matters
+      most. Fold-aware placement means querying <b>FoldingFeature</b> to keep controls off the hinge, and
+      gating posture UI on the feature the device actually reports rather than on &ldquo;this is a
+      foldable&rdquo;: trifolds report no tabletop posture at all.</p>
+    <p class="tag">Jetpack WindowManager · FoldingFeature · WindowMetrics · bubbled windows</p>
+  </div>
+
+  <div class="prob state raise">
+    <h4>The form factors I have not shipped</h4>
+    <p>Android&nbsp;TV, Wear&nbsp;OS and Android&nbsp;Auto. I have not built for any of them and I would not
+      claim otherwise. TV is first, because it is the shortest distance from what I already do&nbsp;&mdash; a
+      media app with Media3, HLS and Cast already in it is the natural place to start, and the hard part
+      there is focus and D-pad navigation, not playback.</p>
+    <p class="tag">androidx.tv · Wear Compose · Android Auto · D-pad focus</p>
+  </div>
+</div></section>
 
 <section id="faq"><div class="wrap">
   <h2><span>Questions people ask</span></h2>
@@ -495,6 +552,10 @@
   <details class="faq state raise" name="faq">
     <summary>Is Matta Ashok Varma available for hire?</summary>
     <p>Yes. He is open to Senior Android Engineer and Android Developer roles in Hyderabad or remote. He can be reached at mashokvarma1997@gmail.com.</p>
+  </details>
+  <details class="faq state raise" name="faq">
+    <summary>Does he build for tablets, foldables and other form factors?</summary>
+    <p>Partly, and the honest split matters. Shipped: Chitra builds from one Kotlin codebase to Android, Desktop and Web through Compose Multiplatform, and three apps he works on already target SDK 37, where Android 17 removed the large-screen resizability opt-out. In progress: WindowSizeClass-driven adaptive layouts and fold-aware placement. Not yet built: Android TV, Wear OS and Android Auto.</p>
   </details>
   <details class="faq state raise" name="faq">
     <summary>What on-device AI has he shipped?</summary>
