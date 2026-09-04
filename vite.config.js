@@ -14,9 +14,15 @@ import { resolve } from 'path'
 // So: build to `dist/` normally, then `npm run deploy` copies the built files
 // up to the root. Sources in `src/`, output in `dist/`, published at the root,
 // and nothing can clobber anything.
+// Cloudflare Workers Builds runs `npx wrangler deploy`, and wrangler publishes
+// `dist/` - not the repo root. So dist/ has to be the COMPLETE site, or the
+// files that only ever lived at the root vanish the moment that deploy lands:
+// ads.txt (fetched by Google's ad crawlers at the domain root) and privacy.html
+// (the privacy-policy URL on the Play listings) among them. `public/` is the
+// single source for those pass-through files; Vite copies it into dist/ verbatim.
 export default defineConfig({
   root: 'src',
-  publicDir: false,
+  publicDir: resolve(__dirname, 'public'),
   build: {
     outDir: resolve(__dirname, 'dist'),
     emptyOutDir: true,

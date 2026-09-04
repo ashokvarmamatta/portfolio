@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Matta Ashok Varma - Resume</title>
+<style>
+@page { margin: 0; size: A4; }
+@media print { body { -webkit-print-color-adjust: exact; zoom: 0.74; } }
+
+/* Keep blocks whole across page boundaries (print + PDF export). */
+.section-title, .exp-header, .edu-header {
+  break-after: avoid; page-break-after: avoid;
+}
+.proj-block, .skill-row, .edu-header, .exp-header, li {
+  break-inside: avoid; page-break-inside: avoid;
+}
+.proj-block { orphans: 3; widows: 3; }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Calibri', 'Segoe UI', Arial, sans-serif;
+  font-size: 9.5pt;
+  line-height: 1.32;
+  color: #222;
+  width: 8.27in;
+  margin: 0 auto;
+  padding: 0.32in 0.45in;
+}
+
+.header { text-align: center; margin-bottom: 3px; }
+.name { font-size: 20pt; font-weight: 700; letter-spacing: 1px; color: #111; margin-bottom: 2px; }
+.contact { font-size: 9pt; color: #444; line-height: 1.5; }
+.contact a { color: #1a5276; text-decoration: none; }
+.contact .sep { margin: 0 4px; color: #aaa; }
+
+.section-title {
+  font-size: 10pt; font-weight: 700; text-transform: uppercase;
+  color: #111; border-bottom: 1.5px solid #333;
+  padding-bottom: 1px; margin-top: 6px; margin-bottom: 3px;
+  letter-spacing: 0.5px;
+}
+
+.summary { font-size: 9pt; line-height: 1.38; color: #333; }
+
+.skill-row { display: flex; font-size: 9pt; line-height: 1.4; }
+.skill-label { font-weight: 700; min-width: 175px; color: #222; flex-shrink: 0; }
+.skill-value { color: #333; }
+
+.exp-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0; }
+.exp-title { font-size: 10pt; font-weight: 700; color: #111; }
+.exp-date { font-size: 9pt; font-weight: 600; color: #333; }
+.exp-company { font-size: 9pt; color: #555; margin-bottom: 2px; }
+
+ul { padding-left: 15px; margin-bottom: 2px; }
+li { margin-bottom: 1px; font-size: 9pt; line-height: 1.32; }
+li strong { color: #111; }
+
+.project-name { font-weight: 700; color: #111; font-size: 9.5pt; }
+.tech-stack { font-size: 8.5pt; color: #555; }
+
+.proj-block { margin-bottom: 2px; }
+.proj-block ul { margin-top: 0; margin-bottom: 1px; }
+.proj-block li { margin-bottom: 0; }
+
+.edu-header { display: flex; justify-content: space-between; align-items: baseline; }
+.edu-school { font-weight: 700; font-size: 10pt; color: #111; }
+.edu-loc { font-size: 9pt; color: #333; }
+.edu-degree { font-size: 9pt; color: #333; }
+.edu-details { font-size: 8.5pt; color: #555; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="name">MATTA ASHOK VARMA</div>
+  <div class="contact">
+    +91 9603573918<span class="sep">|</span>
+    <a href="mailto:mashokvarma1997@gmail.com">mashokvarma1997@gmail.com</a><span class="sep">|</span>
+    <a href="https://www.linkedin.com/in/ashokvarmamatta">linkedin.com/in/ashokvarmamatta</a><span class="sep">|</span>
+    <a href="https://github.com/ashokvarmamatta">github.com/ashokvarmamatta</a><span class="sep">|</span>
+    <a href="https://ashokvarma.dev/">ashokvarma.dev</a>
+  </div>
+</div>
+
+<div class="section-title">SUMMARY</div>
+<div class="summary">
+&bull; Android developer with 4+ years building and shipping production <strong>Android</strong> apps using Kotlin, Jetpack Compose, and <strong>Kotlin Multiplatform (KMP) / Compose Multiplatform</strong> &mdash; one shared codebase, native UI, end-to-end to Google Play release (latest: <a href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.system.core.internals.antar" style="color:#1a5276;">Antar &mdash; Device Info</a>). Proven track record modernizing legacy XML codebases to Compose, eliminating critical OOM crashes, and achieving 99.4% crash-free rates. Expertise in on-device AI (LiteRT, ML Kit, Gemma), hardware integration, Clean Architecture (MVVM/MVI), and AI-assisted development. Delivered 20+ apps across 80+ repositories.
+</div>
+
+<div class="section-title">TECHNICAL SKILLS</div>
+<div>
+  <div class="skill-row"><span class="skill-label">Programming Languages</span><span class="skill-value">: Kotlin, Java, Python, C, SQL, HTML5</span></div>
+  <div class="skill-row"><span class="skill-label">Android & Frameworks</span><span class="skill-value">: Jetpack Compose, Material 3, KMP, Compose Multiplatform, Hilt &amp; Koin (DI), Room DB, Coroutines &amp; Flow, StateFlow/SharedFlow, LiveData, Media3/ExoPlayer (HLS, DASH, RTSP), Google Cast, Retrofit &amp; OkHttp, Ktor, KotlinX Serialization, Jetpack Navigation, Coil 3, CameraX, ML Kit, WorkManager, KSP</span></div>
+  <div class="skill-row"><span class="skill-label">Firebase & Security</span><span class="skill-value">: Analytics, Crashlytics, Cloud Messaging (FCM), Remote Config, AdMob + UMP consent, AndroidX Biometric, R8/ProGuard, Google Maps &amp; HERE Maps SDK</span></div>
+  <div class="skill-row"><span class="skill-label">Testing & Architecture</span><span class="skill-value">: JUnit, MockK, Truth, Turbine, Robolectric, Espresso, Compose UI tests; Clean Architecture, MVVM, MVI, Offline-First, Repository Pattern</span></div>
+  <div class="skill-row"><span class="skill-label">AI & Cloud</span><span class="skill-value">: Gemma 4 (E2B/E4B), Google LiteRT LM, Gemini API, ComfyUI, Cloudflare R2</span></div>
+  <div class="skill-row"><span class="skill-label">Tools & CI/CD</span><span class="skill-value">: GitHub Actions (tag-triggered Gradle build &rarr; release APK &rarr; GitHub Release), Android Studio, Git, Gradle, Figma, Claude Code, FFmpeg</span></div>
+</div>
+
+<div class="section-title">WORK EXPERIENCE</div>
+
+<div class="exp-header">
+  <span class="exp-title">Android Developer</span>
+  <span class="exp-date">Feb 2022 &ndash; Present</span>
+</div>
+<div class="exp-company">Ramson Softech Pvt Ltd, Hyderabad</div>
+<ul>
+  <li><strong>Architecture & Modernization:</strong> Led UI overhaul of high-traffic Play Store apps, migrating 60% of critical modules from XML to Jetpack Compose. Refactored codebases with Koin DI, reducing boilerplate by 40% and improving maintainability across the product suite.</li>
+  <li><strong>Performance & Stability:</strong> Resolved critical memory leaks and OutOfMemoryError crashes across media services by implementing bitmap recycling, lifecycle-aware coroutines, and safe surface tracking. Achieved <strong>99.4% crash-free rate</strong> and reduced ANR rate by <strong>38%</strong>.</li>
+  <li><strong>On-Device AI in Production:</strong> Shipped real on-device ML features in production apps &mdash; ESRGAN super-resolution via <strong>LiteRT</strong> with GPU delegation (incl. TFLite&rarr;LiteRT migration for Android 15's 16 KB page-size mandate), <strong>ML Kit</strong> subject segmentation (background removal, portrait blur), and on-device image-labeling + OCR content search. Also built GenAI pipelines (Gemini API + ComfyUI) for server-side processing.</li>
+  <li><strong>Hardware & Data Management:</strong> Designed offline-first Room DB schemas for heterogeneous data types. Engineered hardware-interfacing features for low-latency camera access, flash control, and microphone integration.</li>
+  <li><strong>Security, Release & CI/CD:</strong> Shipped <strong>biometric auth</strong> (BiometricPrompt with device-credential fallback) on a finance app, <strong>GDPR-style consent</strong> (Google UMP) portfolio-wide, R8/ProGuard hardening, <strong>FCM push</strong> and <strong>Remote Config</strong> flags. Automated <strong>GitHub Actions</strong> pipelines: tag-triggered Gradle build &rarr; release APK &rarr; published GitHub Release.</li>
+</ul>
+
+<div style="font-size: 9pt; font-weight: 600; color: #111; margin-top: 3px; margin-bottom: 2px;">Key Production Apps (Live on Google Play Store):</div>
+<ul>
+  <li><strong>GPS Village Maps & Navigation:</strong> Reduced ANR rate by <strong>38%</strong> via GPS callback optimization, cut cold start by <strong>45%</strong> with lazy Koin DI, migrated 60% XML to Compose, integrated Google Maps + HERE Maps dual SDK. DAU increased <strong>2.4x</strong> post-optimization (Firebase Analytics + Play Console).</li>
+  <li><strong>Transparent Live Wallpaper:</strong> Fixed Camera Busy crashes by resolving WallpaperService-Camera2 lifecycle conflicts &mdash; <strong>92% crash reduction</strong>. Reduced memory footprint by binding Glide + MediaPlayer to the service lifecycle and improved battery efficiency with frame-skip rendering logic. User retention improved <strong>1.8x</strong> (Firebase Analytics).</li>
+  <li><strong>Video Player (Media3):</strong> Local + adaptive streaming over <strong>HLS, DASH, RTSP</strong> with a MediaSessionService foreground player, Picture-in-Picture and Media3 Transformer editing. Implemented <strong>Google Cast</strong> for on-device files via an embedded local HTTP server so the receiver can stream media held only on the phone. Room library, Glance widget, Hilt DI.</li>
+  <li><strong>QR & Barcode Scanner:</strong> Eliminated <strong>100%</strong> of scanner resource leaks via lifecycle-aware coroutines. Scan speed improved <strong>3x</strong> with thumbnail caching. APK size reduced by <strong>22%</strong> removing unused ML model binaries. Crash-free rate improved from 96.1% to <strong>99.4%</strong>.</li>
+</ul>
+
+<div class="section-title">PROJECTS</div>
+
+<div class="proj-block">
+  <span class="project-name">Antar &mdash; Device Info &nbsp;<a href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.system.core.internals.antar" style="color:#34A853; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[Play Store]</a> <a href="https://github.com/ashokvarmamatta/ANTAR" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a></span>
+  <ul>
+    <li>Built and <strong>shipped to Google Play Store</strong>, <strong>open source on GitHub</strong>: device analytics app with real-time StateFlow streams for 44+ hardware sensors, dual SIM detection, battery health gauges, GPS satellite tracking, and full network deep scan. Custom Compose Canvas charts.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Custom Canvas, SensorManager, TelephonyManager, Clean Architecture</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
+  <span class="project-name">Chitra: AI Wallpapers &nbsp;<a href="https://play.google.com/store/apps/details?id=com.ashes.dev.works.chitra.cosmos" style="color:#34A853; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[Play Store]</a></span>
+  <ul>
+    <li>Built end-to-end from scratch to production and <strong>shipped to Google Play Store</strong>. AI-powered wallpaper app with curated collections, Cloudflare R2 CDN for scalable image delivery, offline-first Room DB caching, and Clean Architecture with MVVM.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Cloudflare R2, Room DB, Koin, Material 3, MVVM, Clean Architecture</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
+  <span class="project-name">ZeroClawAndroid &mdash; AI Agent Daemon &nbsp;<a href="https://github.com/ashokvarmamatta/ZeroClawAndroid" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a></span>
+  <ul>
+    <li>Engineered an always-on Android foreground service connecting Telegram and WhatsApp (via Twilio) to multiple LLMs with <strong>automatic waterfall failover</strong> and Cloudflare Tunnel for secure remote access.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Foreground Services, Telegram API, Twilio, Ktor, Cloudflare Tunnel, Multi-LLM Orchestration</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
+  <span class="project-name">MEDHA &mdash; On-Device AI Chat Application &nbsp;<a href="https://github.com/ashokvarmamatta/MEDHA" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a></span>
+  <ul>
+    <li>Built a dual-engine AI assistant with <strong>offline mode</strong> (Gemma 4 E2B via Google LiteRT LM &mdash; GPU-accelerated on-device text, vision &amp; audio) and <strong>online mode</strong> (Gemini API), enabling private on-device LLM inference with zero data collection. Multi-key API failover, Grand Master AI personas, 22+ quick action templates.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Google LiteRT LM, Gemma 4, Gemini API, Koin, Room, Material 3, MVVM</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
+  <span class="project-name">Artha &mdash; On-Device Multimodal AI (Sense Maker)</span>
+  <ul>
+    <li>Building a privacy-first app that ingests <strong>audio, video, images, PDFs and docs</strong>, then summarizes, translates and chats with the content <strong>fully on-device</strong> &mdash; Gemma LLM engine, ML Kit OCR &amp; translation, TTS/STT pipelines. In active development and daily personal use.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Jetpack Compose, Gemma (on-device), ML Kit, Koin, Clean Architecture, Material 3</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
+  <span class="project-name">Chitra KMP &mdash; Cross-Platform Wallpaper Engine (Android, Desktop, Web) &nbsp;<a href="https://github.com/ashokvarmamatta/Chitra" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a></span>
+  <ul>
+    <li>Architected a Compose Multiplatform app running on <strong>Android, Desktop (JVM), and Web (Wasm/JS)</strong> from a single Kotlin codebase. Offline-first sync with Cloudflare R2 CDN, 100% shared UI via Voyager navigation, Coil 3 image loading.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, Compose Multiplatform, Ktor, Coil 3, Koin, Voyager, Cloudflare R2, Material 3</span></li>
+  </ul>
+</div>
+
+<div class="proj-block">
+  <span class="project-name">ProPlayer &mdash; Video Player <a href="https://github.com/ashokvarmamatta/videoplayer2" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a> &nbsp;|&nbsp; WeatherShow KMP &mdash; Cross-Platform Weather App <a href="https://github.com/ashokvarmamatta/WeatherShow-KMP" style="color:#1a5276; text-decoration:none; font-size: 8.5pt; font-weight: 600;">[GitHub]</a></span>
+  <ul>
+    <li><strong>ProPlayer:</strong> Modern video player with gesture controls, PiP, subtitles, playlists. 100% Compose + MVVM + ExoPlayer/Media3.</li>
+    <li><strong>WeatherShow KMP:</strong> Cross-platform weather app targeting Android, iOS and Web from one Kotlin Multiplatform codebase with shared business logic. Web deployed to Vercel; iOS build verified on simulator.</li>
+    <li><span class="tech-stack"><strong>Tech Stack:</strong> Kotlin, KMP, Compose Multiplatform, ExoPlayer/Media3, Ktor, Koin, Room</span></li>
+  </ul>
+</div>
+
+<div class="section-title">EDUCATION</div>
+<div class="edu-header">
+  <span class="edu-school">Institute of Aeronautical Engineering</span>
+  <span class="edu-loc">Hyderabad, India</span>
+</div>
+<div class="edu-degree">Bachelor of Technology, Electronics &amp; Communication Engineering &nbsp;|&nbsp; 2025</div>
+
+</body>
+</html>

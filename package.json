@@ -3,7 +3,7 @@
   "private": true,
   "version": "2.0.0",
   "type": "module",
-  "description": "ashokvarma.dev \u2014 Android developer portfolio. Material 3 tokens, no framework.",
+  "description": "ashokvarma.dev — Android developer portfolio. Material 3 tokens, no framework.",
   "scripts": {
     "dev": "vite",
     "build": "node check-css-vars.js && vite build",
@@ -12,6 +12,6 @@
     "check": "node check-css-vars.js"
   },
   "devDependencies": {
-    "vite": "^5.4.10"
+    "vite": "^7.3.6"
   }
 }
