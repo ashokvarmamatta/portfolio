@@ -46,7 +46,7 @@ h1{font-size:44px;line-height:1.1;letter-spacing:-1px;font-weight:500;color:var(
 
 /* ---------- cards: tonal elevation only, no shadow, no custom colour ---------- */
 .impact{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:40px 0 8px}
-.impact div{background:var(--surface-container-low);padding:20px 18px;border-radius:var(--r-m);
+.impact div{background:var(--surface-container);padding:20px 18px;border-radius:var(--r-m);
   display:flex;flex-direction:column;gap:8px}
 /* .raise declares a 1px transparent border; without box-sizing already set
    globally these would grow by 2px on hover. It is set, so they do not. */
@@ -57,15 +57,15 @@ h1{font-size:44px;line-height:1.1;letter-spacing:-1px;font-weight:500;color:var(
 
 section{padding:44px 0}
 section + section{border-top:1px solid var(--outline-variant)}
-h2{font-size:12px;color:var(--on-surface-variant);text-transform:uppercase;
-  margin-bottom:8px;display:flex;align-items:baseline;gap:8px;font-weight:500}
-h2 > span{letter-spacing:1.6px}
-.sub{color:var(--on-surface-variant);font-size:14px;margin-bottom:26px;max-width:62ch}
+h2{font-size:24px;line-height:1.2;font-weight:600;letter-spacing:-.3px;color:var(--on-surface);
+  text-transform:none;margin-bottom:8px;display:flex;align-items:baseline;gap:8px}
+h2 > span{letter-spacing:-.3px}
+.sub{color:var(--on-surface-variant);font-size:15px;line-height:1.55;margin-bottom:26px;max-width:62ch}
 
-.job{background:var(--surface-container-low);border-radius:var(--r-n);padding:22px 24px;
+.job{background:var(--surface-container);border-radius:var(--r-n);padding:22px 24px;
   margin-bottom:10px}
 .job-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px}
-.job-h h3{font-size:18px;font-weight:500;letter-spacing:0}
+.job-h h3{font-size:18.5px;font-weight:600;letter-spacing:-.2px;color:var(--on-surface)}
 /* M3 suggestion chips */
 .scale,.owner{height:26px;display:inline-flex;align-items:center;padding:0 11px;
   border-radius:var(--r-sm);font-size:12px;font-weight:500;letter-spacing:.1px}
@@ -87,14 +87,14 @@ h2 > span{letter-spacing:1.6px}
 .jl-a{color:var(--primary);text-decoration:none;display:inline-flex;align-items:center;gap:5px;
   padding:7px 10px;margin:-7px -4px;border-radius:var(--r-s)}
 
-.prob{background:var(--surface-container-lowest);border-radius:var(--r-m);
+.prob{background:var(--surface-container-low);border-radius:var(--r-m);
   padding:18px 20px;margin-bottom:10px}
-.prob h4{font-size:16px;font-weight:500;margin-bottom:8px}
+.prob h4{font-size:16px;font-weight:600;color:var(--on-surface);margin-bottom:8px}
 .prob p{color:var(--on-surface-variant);font-size:14px}
 .prob .tag{font-family:var(--mono);font-size:11px;color:var(--outline);margin-top:10px}
 
 .sk{display:grid;grid-template-columns:150px 1fr;gap:14px 24px;font-size:14px;align-items:baseline}
-.sk dt{font-size:11.5px;color:var(--outline);text-align:right;font-weight:500;
+.sk dt{font-size:11.5px;color:var(--outline);text-align:right;font-weight:600;
   text-transform:uppercase;letter-spacing:.8px;line-height:1.7}
 .sk dd{color:var(--on-surface)}
 
@@ -126,6 +126,7 @@ footer p + p{margin-top:2px}
 
 /* --- fluid type: no step changes, so there is no width where it looks wrong --- */
 h1{font-size:clamp(28px, 6.2vw, 44px);letter-spacing:clamp(-1px, -.12vw, -.4px)}
+h2{font-size:clamp(20px, 3.8vw, 24px)}
 .lede:first-of-type{font-size:clamp(17px, 2.4vw, 21px)}
 .impact .n{font-size:clamp(22px, 3.4vw, 28px)}
 
@@ -207,7 +208,7 @@ img, svg{max-width:100%;height:auto}
    are in the DOM (and therefore extractable and indexable) whether or not the
    disclosure is open. `name="faq"` makes them an exclusive accordion natively
    — no JavaScript. */
-.faq{background:var(--surface-container-low);border-radius:var(--r-m);
+.faq{background:var(--surface-container);border-radius:var(--r-m);
   padding:0 20px;margin-bottom:8px}
 .faq summary{list-style:none;cursor:pointer;padding:16px 0;font-size:15.5px;
   font-weight:500;color:var(--on-surface);display:flex;align-items:center;gap:12px}
@@ -233,8 +234,8 @@ img, svg{max-width:100%;height:auto}
 
 /* The GitHub tiles are whole-card links. They had a background swap only; the
    card treatment plus a pointer cursor is what they should always have had. */
-.gh a{border:1px solid transparent}
-.gh a:hover{background:var(--surface-container-low)}   /* the wash does the work now */
+.gh a{border:1px solid var(--outline-variant);background:var(--surface-container)}
+.gh a:hover{background:var(--surface-container-high)}   /* the wash does the work now */
 
 /* Deliberately NOT interactive: .scale, .owner, .stack and .spec are labels,
    not controls. A state layer on them would advertise a click that does not

@@ -82,7 +82,8 @@
    the card never changes size when it lights up.
    --------------------------------------------------------------------------- */
 .raise {
-  border: 1px solid transparent;
+  border: 1px solid var(--outline-variant);
+  box-shadow: 0 1px 3px color-mix(in srgb, var(--scrim) 6%, transparent);
   transition: border-color var(--dur-effects) var(--curve-effects),
               box-shadow   var(--dur-effects) var(--curve-effects),
               transform    var(--dur-fast)    var(--curve-expressive);
@@ -90,15 +91,15 @@
 }
 .raise:hover,
 .raise:focus-within {
-  border-color: var(--outline-variant);
+  border-color: var(--outline);
   transform: translateY(-2px);
-  box-shadow: 0 2px 4px color-mix(in srgb, var(--scrim) 26%, transparent);
+  box-shadow: 0 4px 12px color-mix(in srgb, var(--scrim) 14%, transparent);
 }
 /* pressing settles it back down — the press state is lower than hover, not
    higher, which is what makes it read as a press rather than a second hover */
 .raise:active {
   transform: translateY(0);
-  box-shadow: 0 1px 2px color-mix(in srgb, var(--scrim) 30%, transparent);
+  box-shadow: 0 1px 2px color-mix(in srgb, var(--scrim) 20%, transparent);
   transition-duration: var(--dur-exit);
 }
 

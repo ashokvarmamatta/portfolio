@@ -503,6 +503,28 @@
     if you interview me on them, that is the answer you will get.</p>
 
   <div class="prob state raise">
+    <h4>Agentic Android — tool calling from on-device models</h4>
+    <p>Apps that expose their own functions so an on-device model can call them: <code>androidx.appfunctions</code>,
+      <b>ML Kit GenAI</b>, and where the OS is heading with on-device tool calling. The shift is that the
+      app stops being only a UI you tap and becomes something an assistant can operate on your behalf.</p>
+    <p class="tag">androidx.appfunctions · ML Kit GenAI · on-device tool calling · function calling</p>
+  </div>
+
+  <div class="prob state raise">
+    <h4>Neural networks from the ground up</h4>
+    <p>Working through Karpathy's <i>Zero to Hero</i>, building the autograd engine and transformer models by
+      hand rather than importing libraries, so the on-device inference work rests on first-principles understanding.</p>
+    <p class="tag">autograd · micrograd · transformers · backprop · first-principles AI</p>
+  </div>
+
+  <div class="prob state raise">
+    <h4>Quantization and measurement on real hardware</h4>
+    <p>Running models on physical devices, quantizing them (INT4/INT8), and recording real tokens/sec, RAM footprint,
+      thermal behavior and battery impact instead of theoretical benchmarks.</p>
+    <p class="tag">LiteRT LM · quantization · INT4 · hardware profiling · latency benchmarks</p>
+  </div>
+
+  <div class="prob state raise">
     <h4>Adaptive layout as a build gate, not a nicety</h4>
     <p>From targetSdk&nbsp;37 there is no opt-out. Android&nbsp;17 ignores orientation, aspect-ratio and
       resizability restrictions on any display with a smallest width of 600dp or more, and the manifest
@@ -530,6 +552,13 @@
       media app with Media3, HLS and Cast already in it is the natural place to start, and the hard part
       there is focus and D-pad navigation, not playback.</p>
     <p class="tag">androidx.tv · Wear Compose · Android Auto · D-pad focus</p>
+  </div>
+
+  <div class="prob state raise">
+    <h4>Testing discipline</h4>
+    <p>JUnit, MockK, Turbine and Robolectric&nbsp;— building deterministic unit and state flow test suites
+      running in CI on production apps that do not have one yet.</p>
+    <p class="tag">JUnit · MockK · Turbine · Robolectric · GitHub Actions CI</p>
   </div>
 </div></section>
 

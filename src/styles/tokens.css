@@ -35,9 +35,9 @@
   --surface: #141313;
   --surface-container-lowest: #0f0e0e;
   --surface-container-low: #1c1b1c;
-  --surface-container: #201f20;
-  --surface-container-high: #2b2a2a;
-  --surface-container-highest: #363435;
+  --surface-container: #232223;
+  --surface-container-high: #2d2b2e;
+  --surface-container-highest: #383639;
   --on-surface: #e6e1e1;
   --on-surface-variant: #cbc5ca;
   --outline: #948f94;
@@ -72,21 +72,21 @@
 :root[data-theme="light"] {
   --surface: #fdf8fd;
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #f7f2f7;
-  --surface-container: #f1ecf1;
-  --surface-container-high: #ebe6eb;
-  --surface-container-highest: #e6e1e6;
+  --surface-container-low: #f4edf4;
+  --surface-container: #ede5ee;
+  --surface-container-high: #e5dce6;
+  --surface-container-highest: #ddd3de;
   --on-surface: #1d1b1e;
   --on-surface-variant: #49454b;
   --outline: #7a757e;
-  --outline-variant: #cbc5ce;
+  --outline-variant: #d5ced6;
   --primary: #615d63;
   --on-primary: #ffffff;
-  --primary-container: #e7e0e7;
+  --primary-container: #e6dee6;
   --on-primary-container: #1d1b1f;
-  --secondary-container: #e5e0e4;
+  --secondary-container: #e3dbe2;
   --on-secondary-container: #1c1b1d;
-  --tertiary-container: #f0dde1;
+  --tertiary-container: #ebd6db;
   --on-tertiary-container: #31111d;
   --scrim: #000;
 
@@ -108,21 +108,21 @@
   :root:not([data-theme="dark"]) {
     --surface: #fdf8fd;
     --surface-container-lowest: #ffffff;
-    --surface-container-low: #f7f2f7;
-    --surface-container: #f1ecf1;
-    --surface-container-high: #ebe6eb;
-    --surface-container-highest: #e6e1e6;
+    --surface-container-low: #f4edf4;
+    --surface-container: #ede5ee;
+    --surface-container-high: #e5dce6;
+    --surface-container-highest: #ddd3de;
     --on-surface: #1d1b1e;
     --on-surface-variant: #49454b;
     --outline: #7a757e;
-    --outline-variant: #cbc5ce;
+    --outline-variant: #d5ced6;
     --primary: #615d63;
     --on-primary: #ffffff;
-    --primary-container: #e7e0e7;
+    --primary-container: #e6dee6;
     --on-primary-container: #1d1b1f;
-    --secondary-container: #e5e0e4;
+    --secondary-container: #e3dbe2;
     --on-secondary-container: #1c1b1d;
-    --tertiary-container: #f0dde1;
+    --tertiary-container: #ebd6db;
     --on-tertiary-container: #31111d;
 
     /* accent and severity, re-toned for a light ground: the dark values are
