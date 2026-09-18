@@ -178,7 +178,7 @@
       "url": "https://ashokvarma.dev/",
       "name": "Matta Ashok Varma — Android Developer | Kotlin, Compose, On-Device AI",
       "dateCreated": "2024-01-01T00:00:00+00:00",
-      "dateModified": "2026-09-04T00:00:00+00:00",
+      "dateModified": "2026-09-18T00:00:00+05:30",
       "mainEntity": {
         "@id": "https://ashokvarma.dev/#person"
       },
@@ -287,7 +287,7 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,300..700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
   <script type="module" crossorigin src="/assets/main-5WVTSO-s.js"></script>
   <link rel="stylesheet" crossorigin href="/assets/main-CiTESh2q.css">
 </head>
@@ -317,9 +317,11 @@
     I'm an Android developer in Hyderabad, four years in, currently at Ramson Softech.
   </p>
   <p class="lede">
-    I work on consumer apps in Kotlin and Compose&nbsp;— the largest is past <b>10 million
-    installs</b>, which mostly means a bug you ship on Friday is ten million people's problem by
-    Monday. I also design and release my own apps on Google Play.
+    At Ramson I build consumer apps in Kotlin and Compose from an empty project to Google Play,
+    and modernize legacy Java and XML codebases&nbsp;— migrating them to Kotlin and Compose while
+    fixing the ANRs, crashes and memory leaks they carry. The largest is past
+    <b>10 million installs</b>, which mostly means a bug you ship on Friday is ten million
+    people's problem by Monday. Outside work, I design and release my own apps too.
   </p>
   <p class="lede">
     The work I like most is the bug nobody can reproduce. Right now that curiosity goes into
@@ -447,6 +449,17 @@
       the same flow&nbsp;— Credential Manager needs an <b>Activity</b> context to draw the picker, and
       Firebase requires a <b>recent login</b> before it will delete an account.</p>
     <div class="tag">credential manager · firebase auth · oauth 2.0</div>
+  </div>
+
+  <div class="prob state raise">
+    <h4>Result rows that vanished only on the second search</h4>
+    <p>In an inherited XML screen, the first lookup rendered fine and every later one lost its
+      result rows. The data was set&nbsp;— a log proved it&nbsp;— yet the views were gone from the
+      layout dump. A <code>TransitionManager.beginDelayedTransition</code> at submit had
+      scheduled a fade-out of the visible rows, and its end state was re-applied <b>after</b>
+      the async result made them visible again. Starting the transition where the new state
+      is set, not at submit, fixed it.</p>
+    <div class="tag">xml views · transitions · async ui state</div>
   </div>
 
   <div class="prob state raise">
