@@ -85,9 +85,15 @@ h2 > span{letter-spacing:-.025em}
 .scale,.owner{height:26px;display:inline-flex;align-items:center;padding:0 11px;
   border-radius:var(--r-sm);font-size:12px;font-weight:500;letter-spacing:.1px}
 .scale{color:var(--on-accent2-container);background:var(--accent2-container)}
-.owner{margin-left:auto;color:var(--on-surface-variant);border:1px solid var(--outline-variant)}
-.owner.built{color:var(--on-secondary-container);background:var(--secondary-container);border-color:transparent}
-.owner.inherit{color:var(--on-surface-variant);background:var(--surface-container-high);border-color:transparent}
+/* One treatment for all three ownership labels. They were an outline, a
+   lavender fill and a grey fill - so the SAME word ("mine") rendered two
+   different ways depending on which card it sat on, and the filled variants
+   were the loudest neutral element on the page while saying the least. These
+   are metadata, not controls: the text differentiates them, not the chrome. */
+.owner{margin-left:auto;color:var(--on-surface-variant);background:transparent;
+  border:1px solid var(--outline-variant);font-weight:500}
+.owner.built,.owner.inherit{color:var(--on-surface-variant);background:transparent;
+  border-color:var(--outline-variant)}
 .job p{color:var(--on-surface-variant);font-size:var(--fs-card);line-height:1.58;margin:10px 0 0}
 .job p b{color:var(--hl);font-weight:600}
 /* the metric line stays neutral: if the numbers and the terms are both
@@ -118,13 +124,23 @@ h2 > span{letter-spacing:-.025em}
    them. They are affordances now: a tonal pill in the brand hue, with a
    border that fills on hover, so the row reads as "these open something". */
 .jl-a{color:var(--primary);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
-  padding:7px 13px;border-radius:var(--r-full);
-  background:var(--primary-container);border:1px solid transparent;
+  /* line-height:1 matters more than it looks: the pill inherited body 1.62,
+     so its box was ~21px of line box before any padding, and on a phone that
+     rendered as a fat lozenge rather than a control. Caught on a device
+     screenshot - it is not visible at desktop widths. */
+  line-height:1;padding:9px 14px;border-radius:var(--r-full);
+  /* a filled --primary-container (#38281a) against a #232223 card is a brown
+     smudge in dark. An outline carries the same affordance at a fraction of
+     the weight, and the fill is kept for the hover, where it now means
+     something. */
+  background:transparent;
+  border:1px solid color-mix(in srgb, var(--primary) 34%, transparent);
   font-weight:600;letter-spacing:-.005em;
   transition:background var(--dur-effects,200ms) var(--curve-effects,ease),
              color var(--dur-effects,200ms) var(--curve-effects,ease),
              border-color var(--dur-effects,200ms) var(--curve-effects,ease)}
 .jl-a:hover{background:var(--primary);color:var(--on-primary);border-color:transparent}
+
 .jl-a:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 
 .prob{background:var(--card);border-radius:var(--r-n);
@@ -232,7 +248,13 @@ img, svg{max-width:100%;height:auto}
        is a ~20px target with a mouse, which is fine, and a miss with a thumb. --- */
 @media (pointer: coarse){
   .bar nav a{padding:14px 0;display:inline-block}
-  .jl-a{padding:11px 12px;margin:-11px -6px}
+  /* NO negative margin. It belonged to the old treatment, where .jl-a was a
+     plain text link and -6px per side cancelled its tap padding so the row
+     stayed optically flush with the card edge. These are bordered pills now,
+     so -6px each side against an 8px gap made adjacent pills OVERLAP by 4px -
+     visible only on touch, which is why desktop looked correct and measuring
+     on desktop could not catch it. Caught on a device screenshot. */
+  .jl-a{padding:11px 15px}
   .faq summary{padding:18px 0}
 }
 
