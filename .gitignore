@@ -2,3 +2,7 @@ node_modules/
 .vite/
 *.local
 dist/
+
+# local before/after copies from the redesign pass; the originals are in git
+# history (813fe2d), so these are convenience only and must not be committed
+.premium-backup/

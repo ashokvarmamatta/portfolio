@@ -2,8 +2,11 @@
 *{box-sizing:border-box;margin:0;padding:0}
 html{color-scheme:dark light}
 body{background:var(--surface);color:var(--on-surface);font-family:var(--sans);
-  font-variation-settings:"opsz" 14;
-  line-height:1.6;font-size:15px;-webkit-font-smoothing:antialiased}
+  line-height:1.62;font-size:var(--fs-body);letter-spacing:-.003em;-webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  /* stats and metrics are compared down a column; proportional figures make
+     that column look ragged */
+  font-variant-numeric:tabular-nums}
 .wrap{max-width:920px;margin:0 auto;padding:0 24px}
 a{color:inherit}
 
@@ -26,17 +29,18 @@ header{padding:56px 0 44px}
 .idrow{display:flex;align-items:center;gap:22px;margin-bottom:22px}
 .photo{width:88px;height:88px;border-radius:var(--r-full);object-fit:cover;flex-shrink:0}
 /* M3 display-small / headline-large: weight 400, tight tracking */
-h1{font-size:44px;line-height:1.1;letter-spacing:-1px;font-weight:500;color:var(--on-surface);
-  font-variation-settings:"opsz" 144,"wdth" 100}   /* Roboto Flex optical size for display */
+h1{font-family:var(--display);font-size:var(--fs-display);line-height:1.05;
+  letter-spacing:-.03em;font-weight:700;color:var(--on-surface)}
 .role{font-size:14px;color:var(--on-surface-variant);margin-top:8px;letter-spacing:.1px}
-.lede{font-size:16px;color:var(--on-surface-variant);max-width:64ch;margin-bottom:14px}
-.lede:first-of-type{font-size:21px;line-height:1.45;color:var(--on-surface);margin-bottom:18px;
-  font-variation-settings:"opsz" 32}
-.lede b{color:var(--on-surface);font-weight:500}
+.lede{font-size:15.5px;line-height:1.65;color:var(--on-surface-variant);max-width:68ch;
+  margin-bottom:14px}
+.lede:first-of-type{font-size:var(--fs-lede);line-height:1.48;color:var(--on-surface);
+  margin-bottom:20px;letter-spacing:-.015em;font-weight:450}
+.lede b{color:var(--hl);font-weight:600}
 
 /* ---------- M3 buttons: 40dp tall, full round, 24dp padding, label-large ---------- */
 .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
-.btn{height:40px;display:inline-flex;align-items:center;justify-content:center;
+.btn{height:40px;display:inline-flex;align-items:center;justify-content:center;gap:7px;
   padding:0 24px;border-radius:var(--r-full);font-size:14px;font-weight:500;
   letter-spacing:.1px;line-height:1;                 /* body line-height 1.6 was
      pushing the label off-centre inside the 40dp pill */
@@ -46,56 +50,95 @@ h1{font-size:44px;line-height:1.1;letter-spacing:-1px;font-weight:500;color:var(
 
 /* ---------- cards: tonal elevation only, no shadow, no custom colour ---------- */
 .impact{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:40px 0 8px}
-.impact div{background:var(--surface-container);padding:20px 18px;border-radius:var(--r-m);
-  display:flex;flex-direction:column;gap:8px}
+/* `.impact div` matched EVERY descendant, so .n and .l each got their own
+   border and shadow and the tile rendered as boxes inside a box. Harmless
+   when the rule only set a background; glaring the moment it sets a border. */
+.impact > div{background:var(--card);padding:20px 18px 18px;
+  border-radius:var(--r-n);border:1px solid var(--card-border);box-shadow:var(--e1);
+  display:flex;flex-direction:column;gap:10px}
 /* .raise declares a 1px transparent border; without box-sizing already set
    globally these would grow by 2px on hover. It is set, so they do not. */
 /* line-height must be tight here - inheriting 1.6 on 26px text opened a 42px
    line box and looked like a broken gap */
-.impact .n{font-size:28px;font-weight:400;color:var(--on-surface);letter-spacing:-.5px;line-height:1.05}
-.impact .l{font-size:12.5px;color:var(--on-surface-variant);line-height:1.4}
+/* deliberately NOT --hl: a 33px brass numeral reads muddy on white, and if
+   the headline numbers and the inline terms are both accented then nothing is
+   emphasised. The accent marks terms; the numbers carry weight instead. */
+.impact .n{font-family:var(--display);font-size:var(--fs-stat);font-weight:700;
+  color:var(--on-surface);letter-spacing:-.03em;line-height:1}
+.impact .l{font-size:12.5px;color:var(--on-surface-variant);line-height:1.42;margin-top:auto}
 
-section{padding:44px 0}
+section{padding:46px 0}
 section + section{border-top:1px solid var(--outline-variant)}
-h2{font-size:24px;line-height:1.2;font-weight:600;letter-spacing:-.3px;color:var(--on-surface);
-  text-transform:none;margin-bottom:8px;display:flex;align-items:baseline;gap:8px}
-h2 > span{letter-spacing:-.3px}
-.sub{color:var(--on-surface-variant);font-size:15px;line-height:1.55;margin-bottom:26px;max-width:62ch}
+h2{font-family:var(--display);font-size:var(--fs-h2);line-height:1.16;font-weight:600;
+  letter-spacing:-.022em;color:var(--on-surface);
+  text-transform:none;margin-bottom:10px;display:flex;align-items:baseline;gap:8px}
+h2 > span{letter-spacing:-.025em}
+.sub{color:var(--on-surface-variant);font-size:15px;line-height:1.6;margin-bottom:26px;
+  max-width:64ch}
 
-.job{background:var(--surface-container);border-radius:var(--r-n);padding:22px 24px;
-  margin-bottom:10px}
+.job{background:var(--card);border-radius:var(--r-n);padding:21px 24px;
+  margin-bottom:11px;border:1px solid var(--card-border);box-shadow:var(--e1)}
 .job-h{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:2px}
-.job-h h3{font-size:18.5px;font-weight:600;letter-spacing:-.2px;color:var(--on-surface)}
+.job-h h3{font-family:var(--display);font-size:18px;font-weight:600;letter-spacing:-.015em;
+  color:var(--on-surface)}
 /* M3 suggestion chips */
 .scale,.owner{height:26px;display:inline-flex;align-items:center;padding:0 11px;
   border-radius:var(--r-sm);font-size:12px;font-weight:500;letter-spacing:.1px}
-.scale{color:var(--on-tertiary-container);background:var(--tertiary-container)}
+.scale{color:var(--on-accent2-container);background:var(--accent2-container)}
 .owner{margin-left:auto;color:var(--on-surface-variant);border:1px solid var(--outline-variant)}
 .owner.built{color:var(--on-secondary-container);background:var(--secondary-container);border-color:transparent}
 .owner.inherit{color:var(--on-surface-variant);background:var(--surface-container-high);border-color:transparent}
-.job p{color:var(--on-surface-variant);font-size:14.5px;margin:10px 0 0}
+.job p{color:var(--on-surface-variant);font-size:var(--fs-card);line-height:1.58;margin:10px 0 0}
+.job p b{color:var(--hl);font-weight:600}
+/* the metric line stays neutral: if the numbers and the terms are both
+   accented, nothing is emphasised and the accent stops meaning anything */
 .job .res{color:var(--on-surface)}
-.job .res b{color:var(--on-surface);font-weight:500}
-.stack{font-family:var(--mono);font-size:11.5px;color:var(--outline);margin-top:14px}
-.jl{display:flex;gap:18px;margin-top:12px;font-size:13.5px;font-weight:500}
-.jl{gap:6px}
+.job .res b{color:var(--on-surface);font-weight:600}
+/* This was one mono string with middot separators - which reads as terminal
+   output, not as a designed row, and it was the weakest band on every card.
+   Now it is the SAME chip the apps page already used for the same job, so
+   both pages describe a stack with one component instead of two.
+   Separators are gone: the chip boundary is the separator. */
+.stack,.prob .tag{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.stack span,.prob .tag span,.spec span{
+  font-family:var(--mono);font-size:11.3px;line-height:1;
+  color:var(--hl);background:var(--hl-container);
+  padding:6px 9px;border-radius:var(--r-s);
+  border:1px solid color-mix(in srgb, var(--hl) 16%, transparent);
+  white-space:nowrap}
+.jl{display:flex;gap:8px;margin-top:16px;font-size:13px;font-weight:500;flex-wrap:wrap}
 /* Links inside a card are the only genuinely interactive thing in there, and
    they had a text-decoration:underline hover — a plain-HTML affordance, not an
    M3 one. They are targets now: a state layer with a real shape, and enough
    padding for the wash to be visible. The negative margin cancels that padding
    so the row sits exactly where it did before. */
-.jl-a{color:var(--primary);text-decoration:none;display:inline-flex;align-items:center;gap:5px;
-  padding:7px 10px;margin:-7px -4px;border-radius:var(--r-s)}
+/* These were plain coloured words in a row - and with primary a near-grey,
+   they read as body text that happened to be a slightly different shade. The
+   only links on the card looked less clickable than the tech chips beside
+   them. They are affordances now: a tonal pill in the brand hue, with a
+   border that fills on hover, so the row reads as "these open something". */
+.jl-a{color:var(--primary);text-decoration:none;display:inline-flex;align-items:center;gap:6px;
+  padding:7px 13px;border-radius:var(--r-full);
+  background:var(--primary-container);border:1px solid transparent;
+  font-weight:600;letter-spacing:-.005em;
+  transition:background var(--dur-effects,200ms) var(--curve-effects,ease),
+             color var(--dur-effects,200ms) var(--curve-effects,ease),
+             border-color var(--dur-effects,200ms) var(--curve-effects,ease)}
+.jl-a:hover{background:var(--primary);color:var(--on-primary);border-color:transparent}
+.jl-a:focus-visible{outline:2px solid var(--primary);outline-offset:2px}
 
-.prob{background:var(--surface-container-low);border-radius:var(--r-m);
-  padding:18px 20px;margin-bottom:10px}
-.prob h4{font-size:16px;font-weight:600;color:var(--on-surface);margin-bottom:8px}
-.prob p{color:var(--on-surface-variant);font-size:14px}
-.prob .tag{font-family:var(--mono);font-size:11px;color:var(--outline);margin-top:10px}
+.prob{background:var(--card);border-radius:var(--r-n);
+  padding:18px 20px;margin-bottom:10px;border:1px solid var(--card-border);
+  box-shadow:var(--e1)}
+.prob h4{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:-.01em;color:var(--on-surface);
+  margin-bottom:7px}
+.prob p{color:var(--on-surface-variant);font-size:14.3px;line-height:1.58}
+.prob p b{color:var(--hl);font-weight:600}
+/* .prob .tag shares the chip rule above */
 
 .sk{display:grid;grid-template-columns:150px 1fr;gap:14px 24px;font-size:14px;align-items:baseline}
-.sk dt{font-size:11.5px;color:var(--outline);text-align:right;font-weight:600;
-  text-transform:uppercase;letter-spacing:.8px;line-height:1.7}
+.sk dt{font-size:11.5px;color:var(--primary);text-align:right;font-weight:700;
+  text-transform:uppercase;letter-spacing:.1em;line-height:1.7}
 .sk dd{color:var(--on-surface)}
 
 footer{padding:36px 0 64px;color:var(--on-surface-variant);font-size:13.5px;
@@ -125,10 +168,8 @@ footer p + p{margin-top:2px}
    ============================================================================ */
 
 /* --- fluid type: no step changes, so there is no width where it looks wrong --- */
-h1{font-size:clamp(28px, 6.2vw, 44px);letter-spacing:clamp(-1px, -.12vw, -.4px)}
-h2{font-size:clamp(20px, 3.8vw, 24px)}
-.lede:first-of-type{font-size:clamp(17px, 2.4vw, 21px)}
-.impact .n{font-size:clamp(22px, 3.4vw, 28px)}
+/* the scale lives in tokens.css now and is already fluid, so these
+   overrides would only re-shrink it */
 
 /* --- long unbreakable tokens (package names, mono stack lines) must never be
        the reason a page scrolls sideways --- */
@@ -225,7 +266,28 @@ img, svg{max-width:100%;height:auto}
    A wrapped element rather than a ::after, because .state already uses ::after
    for the wash and one element gets one ::after. Wrapping is also what lets it
    move independently of the label. */
-.ar{font-style:normal;font-size:.88em;line-height:1;display:inline-block;margin-left:4px;
+/* This was the CHARACTER U+2197 in an <i>. Neither Inter nor Space Grotesk
+   ships that codepoint - verified against the unicode-range Google serves -
+   so the browser fell back to a system symbol font for it. The arrow was
+   therefore a different typeface from its own label: it ignored font-weight,
+   carried different metrics, sat visibly high against the text, and changed
+   shape per OS. That is the "text glyph as an icon" failure the UI-designer
+   role rules out, and it is what made the pill row look unfinished.
+
+   As an SVG it is sized in em (so it tracks the label), stroked in
+   currentColor (so it inherits the hover state for free), and its box is
+   centred by the parent's align-items - with the artwork drawn symmetrically
+   inside the viewBox so optical centre and box centre coincide. */
+.ar{width:.74em;height:.74em;flex:none;display:block;
+  /* align-items:center centres the icon on the LINE BOX, but a line box
+     reserves descender space the label mostly does not use, so a centred icon
+     lands ~1.9px low against the text's optical centre (measured: midway
+     between baseline and cap height). This lifts it by that amount, in em so
+     it holds at every size the icon is used at. `position` rather than
+     `transform` because the hover travel owns transform. */
+  position:relative;top:-.144em;
+  fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linecap:round;stroke-linejoin:round;
   transition:transform var(--dur-fast,350ms) var(--curve-expressive,cubic-bezier(.38,1.21,.22,1))}
 /* it points up-and-right, so that is the direction it travels */
 .jl-a:hover .ar,
@@ -240,3 +302,23 @@ img, svg{max-width:100%;height:auto}
 /* Deliberately NOT interactive: .scale, .owner, .stack and .spec are labels,
    not controls. A state layer on them would advertise a click that does not
    exist, which is worse than looking static. */
+
+/* ---------------------------------------------------------------------------
+   Scroll reveal. The class is set by src/reveal.js, which never runs under
+   prefers-reduced-motion - so the hidden state below can only ever exist on a
+   page where something is going to un-hide it. Transform and opacity only:
+   both are compositor properties, so a column of cards revealing does not
+   relayout the page.
+   --------------------------------------------------------------------------- */
+[data-reveal]{opacity:0;transform:translate3d(0,12px,0);
+  transition:opacity var(--dur-enter,400ms) var(--curve-emphasized-decel,ease-out) var(--reveal-delay,0ms),
+             transform var(--dur-enter,400ms) var(--curve-emphasized-decel,ease-out) var(--reveal-delay,0ms);
+  will-change:opacity,transform}
+[data-reveal="in"]{opacity:1;transform:none;will-change:auto}
+
+@media (prefers-reduced-motion: reduce){
+  /* belt and braces: the script already bails, but if it ever ran anyway the
+     content must not be left invisible */
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  *,*::before,*::after{animation-duration:.01ms !important;transition-duration:.01ms !important}
+}

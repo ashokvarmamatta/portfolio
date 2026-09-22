@@ -49,7 +49,7 @@
   position: absolute;
   inset: 0;
   border-radius: inherit;          /* never square off the host */
-  background: currentColor;
+  background: var(--state-layer, currentColor);
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-effects) var(--curve-effects);
@@ -82,8 +82,8 @@
    the card never changes size when it lights up.
    --------------------------------------------------------------------------- */
 .raise {
-  border: 1px solid var(--outline-variant);
-  box-shadow: 0 1px 3px color-mix(in srgb, var(--scrim) 6%, transparent);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--e1);
   transition: border-color var(--dur-effects) var(--curve-effects),
               box-shadow   var(--dur-effects) var(--curve-effects),
               transform    var(--dur-fast)    var(--curve-expressive);
@@ -91,9 +91,12 @@
 }
 .raise:hover,
 .raise:focus-within {
-  border-color: var(--outline);
+  /* was a flat 14% of pure black, which on a white card is a hard grey
+     shadow rather than a lift. --e2 is the softer layered pair, and it is
+     `none` in dark where a shadow on #141313 only muddies the edge. */
+  border-color: var(--hover-border);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px color-mix(in srgb, var(--scrim) 14%, transparent);
+  box-shadow: var(--e2);
 }
 /* pressing settles it back down — the press state is lower than hover, not
    higher, which is what makes it read as a press rather than a second hover */

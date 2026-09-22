@@ -25,8 +25,45 @@
   --mo-spatial: 350ms;
   --ease: cubic-bezier(.2, 0, 0, 1);
 
-  --mono: "Roboto Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-  --sans: "Roboto Flex", Roboto, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  /* --- elevation ---------------------------------------------------------
+     The cards were "tonal elevation only, no shadow". That is defensible in
+     dark, where a drop shadow against #141313 is invisible - but in light it
+     left every card flat, because tonal elevation across a 4% ladder is not
+     a visible cue either. M3 levels 1-5 DO carry a shadow; these are those,
+     kept deliberately soft so they read as depth rather than decoration. */
+  --e0: none;
+  --e1: 0 1px 2px rgba(16,12,24,.05), 0 1px 3px 1px rgba(16,12,24,.04);
+  --e2: 0 1px 2px rgba(16,12,24,.06), 0 2px 6px 2px rgba(16,12,24,.05);
+  --e3: 0 4px 8px 3px rgba(16,12,24,.05), 0 1px 3px rgba(16,12,24,.07);
+
+  /* --- type scale --------------------------------------------------------
+     Everything used to sit between 11px and 16px with weights 400-600, so no
+     element had presence relative to any other. Real scale contrast is the
+     cheapest premium signal there is.
+
+     A first pass overshot it - 58px display and 44px stats read as shouting
+     rather than confident. These are a modest step up from the original
+     44/24/21/28, not a different register. */
+  --fs-display: clamp(30px, 5.1vw, 45px);
+  --fs-h2:      clamp(20px, 3.3vw, 25px);
+  --fs-lede:    clamp(17px, 2.1vw, 19.5px);
+  --fs-stat:    clamp(26px, 3.9vw, 33px);
+  --fs-body:    15.5px;
+  --fs-card:    14.8px;
+
+  /* --- type families -----------------------------------------------------
+     Was Roboto Flex + Roboto Mono: Android's system faces, on a website. The
+     UI-designer role calls this out directly - "never default-Roboto-
+     everywhere unless Roboto is a documented brand choice" - and it is why no
+     amount of size and spacing tuning made the page stop reading as a stock
+     M3 sample. Two families, per that rule: Space Grotesk carries display,
+     Inter carries body. JetBrains Mono is a third but a FUNCTIONAL one - it
+     sets code and library names, which need a mono, and it is the face he
+     actually writes Kotlin in. */
+  --display: "Space Grotesk", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
 /* ---------------------------------------------------------------- dark ---- */
@@ -42,15 +79,61 @@
   --on-surface-variant: #cbc5ca;
   --outline: #948f94;
   --outline-variant: #49464a;
-  --primary: #cbc4cb;
-  --on-primary: #322f34;
-  --primary-container: #2d2a2f;
-  --on-primary-container: #bcb6bc;
+
+  /* --- brand decision, documented ----------------------------------------
+     The UI-designer role forbids "default M3 dynamic purple ... unless the
+     brand IS purple by documented decision". It was purple by ACCIDENT - the
+     leftover hue of a generated tonal palette - so this is that decision,
+     made the other way: the identity is WARM BRASS, and it is the one thing
+     on the page carrying real chroma.
+
+     The second accent has a job rather than being a leftover role: a cool
+     TEAL marks shipped/live state and install counts. The hue separation is
+     what lets a status chip read as status instead of decoration - and it
+     replaces the pink tertiary chips, which fought the brass.
+
+     Surfaces stay near-neutral on purpose. "Raise the chroma" means the
+     accents, not the paper: a tinted 900px reading column is what made this
+     look dusty in the first place.
+     ------------------------------------------------------------------- */
+  --primary: #eaba7c;
+  --on-primary: #3d2911;
+  --primary-container: #38281a;
+  --on-primary-container: #f6d7b2;
+  --accent2: #74d9ca;
+  --on-accent2: #06312c;
+  --accent2-container: #10302c;
+  --on-accent2-container: #a8e9dd;
   --secondary-container: #4d4b4d;
   --on-secondary-container: #ece6e9;
   --tertiary-container: #31292b;
   --on-tertiary-container: #c1b4b7;
   --scrim: #000;
+  /* in dark, elevation is carried by the tonal ladder; a drop shadow on
+     #141313 is invisible at best and muddy at worst */
+  --e1: none;
+  --e2: none;
+  --e3: none;
+  /* A raised card must move UP the tonal ladder in dark - lighter than the
+     page, never darker. Pointing cards at surface-container-lowest made them
+     #0f0e0e against a #141313 page, which reads as a hole rather than a card
+     and is backwards from how M3 expresses elevation in a dark scheme. */
+  --card: var(--surface-container);
+  --card-border: var(--outline-variant);
+  /* hover: on dark, currentColor is a light grey, so an 8% film LIFTS the
+     card. That is why dark already felt right and light did not. */
+  --state-layer: currentColor;
+  --hover-border: var(--outline);
+  /* --- highlight: the accent for inline emphasis --------------------------
+     Product names, libraries, the load-bearing noun in a sentence - all of it
+     was bold --on-surface, so a card rendered as one undifferentiated slab of
+     bold and the eye had nothing to land on. A warm brass against these cool
+     violet-greys is the complementary pairing, and it is the one accent on
+     the page (the Android green is scoped to the parked radar). Restraint is
+     the point: it marks terms, it is not a second body colour. */
+  --hl: #e8bd85;
+  --hl-quiet: #c79a63;
+  --hl-container: #2a2119;
 
   /* --- accent: the Android green the radar page is built around. It was 13
      hardcoded hex values in radar.css, which is why that page ignored the
@@ -70,24 +153,60 @@
 
 /* --------------------------------------------------------------- light ---- */
 :root[data-theme="light"] {
-  --surface: #fdf8fd;
+  /* Retoned 2026-09-22. The old ladder was a neutral-VARIANT purple: page
+     #fdf8fd against card #ede5ee is barely 4% apart in luminance, so cards
+     read as slightly dirty paper rather than objects, and at that lightness
+     the chroma reads dusty rather than rich. Two changes: pull the chroma
+     almost out of the large surfaces, and widen the steps between them so
+     elevation is legible. The colour that is left now lives in primary and
+     the accent, where it is doing work. */
+  --surface: #fbfafc;
   --surface-container-lowest: #ffffff;
-  --surface-container-low: #f4edf4;
-  --surface-container: #ede5ee;
-  --surface-container-high: #e5dce6;
-  --surface-container-highest: #ddd3de;
-  --on-surface: #1d1b1e;
-  --on-surface-variant: #49454b;
-  --outline: #7a757e;
-  --outline-variant: #d5ced6;
-  --primary: #615d63;
+  --surface-container-low: #f5f4f8;
+  --surface-container: #efedf3;
+  --surface-container-high: #e6e3ec;
+  --surface-container-highest: #dcd8e4;
+  /* deeper ink: #1d1b1e on a near-white ground is only ~14:1; going darker
+     is most of what makes body copy feel set rather than typed */
+  --on-surface: #15131a;
+  --on-surface-variant: #45414e;
+  --outline: #6d6878;
+  --outline-variant: #dbd7e3;
+  /* primary was #615d63 - a GREY. Nothing on the page carried colour, which
+     is the single biggest reason it read flat. A deep violet-ink keeps the
+     family and finally gives buttons, links and section labels presence. */
+  --primary: #8a5410;
   --on-primary: #ffffff;
-  --primary-container: #e6dee6;
-  --on-primary-container: #1d1b1f;
-  --secondary-container: #e3dbe2;
-  --on-secondary-container: #1c1b1d;
-  --tertiary-container: #ebd6db;
-  --on-tertiary-container: #31111d;
+  --primary-container: #f8ead5;
+  --on-primary-container: #2d1a03;
+  --accent2: #0c6459;
+  --on-accent2: #ffffff;
+  --accent2-container: #cdeee7;
+  --on-accent2-container: #04302a;
+  --secondary-container: #e4e0ef;
+  --on-secondary-container: #1b1826;
+  --tertiary-container: #ece6f0;
+  --on-tertiary-container: #241f29;
+  /* in light, a raised card is white on the faintly tinted page ground */
+  --card: var(--surface-container-lowest);
+  --card-border: var(--outline-variant);
+  /* On white, an 8% film of currentColor (near-black) is a grey smear -
+     which is exactly why the light hover looked dirty while dark looked
+     fine. Tinting with the brand hue makes the same 8% read as warmth. */
+  /* The dark block's selector is `:root, :root[data-theme="dark"]`, so its
+     `--e1: none` also lands on plain :root - light therefore inherited NO
+     shadow at all until these re-declared it. Light is the theme that
+     actually needs them: on white, elevation IS the shadow. */
+  --e1: 0 1px 2px rgba(60,42,16,.05), 0 1px 3px 1px rgba(60,42,16,.04);
+  --e2: 0 2px 4px rgba(60,42,16,.06), 0 6px 14px 2px rgba(60,42,16,.07);
+  --e3: 0 4px 8px 3px rgba(60,42,16,.06), 0 1px 3px rgba(60,42,16,.08);
+  --state-layer: var(--primary);
+  --hover-border: color-mix(in srgb, var(--primary) 38%, var(--outline-variant));
+  /* the brass has to go much deeper on white or it is unreadable - same hue,
+     the tone the ground demands */
+  --hl: #7a4f14;
+  --hl-quiet: #8a6230;
+  --hl-container: #f6ecdf;
   --scrim: #000;
 
   /* accent and severity, re-toned for a light ground: the dark values are
@@ -104,26 +223,67 @@
 }
 
 /* follow the OS until the visitor chooses */
+/* Pre-JS paint and no-JS visitors only: theme.js sets data-theme on load.
+   MIRROR of the block above - copied from it verbatim. If you change a light
+   value, change it there and re-copy, or the page flashes the old palette
+   before the script runs. */
 @media (prefers-color-scheme: light) {
   :root:not([data-theme="dark"]) {
-    --surface: #fdf8fd;
+    /* Retoned 2026-09-22. The old ladder was a neutral-VARIANT purple: page
+       #fdf8fd against card #ede5ee is barely 4% apart in luminance, so cards
+       read as slightly dirty paper rather than objects, and at that lightness
+       the chroma reads dusty rather than rich. Two changes: pull the chroma
+       almost out of the large surfaces, and widen the steps between them so
+       elevation is legible. The colour that is left now lives in primary and
+       the accent, where it is doing work. */
+    --surface: #fbfafc;
     --surface-container-lowest: #ffffff;
-    --surface-container-low: #f4edf4;
-    --surface-container: #ede5ee;
-    --surface-container-high: #e5dce6;
-    --surface-container-highest: #ddd3de;
-    --on-surface: #1d1b1e;
-    --on-surface-variant: #49454b;
-    --outline: #7a757e;
-    --outline-variant: #d5ced6;
-    --primary: #615d63;
+    --surface-container-low: #f5f4f8;
+    --surface-container: #efedf3;
+    --surface-container-high: #e6e3ec;
+    --surface-container-highest: #dcd8e4;
+    /* deeper ink: #1d1b1e on a near-white ground is only ~14:1; going darker
+       is most of what makes body copy feel set rather than typed */
+    --on-surface: #15131a;
+    --on-surface-variant: #45414e;
+    --outline: #6d6878;
+    --outline-variant: #dbd7e3;
+    /* primary was #615d63 - a GREY. Nothing on the page carried colour, which
+       is the single biggest reason it read flat. A deep violet-ink keeps the
+       family and finally gives buttons, links and section labels presence. */
+    --primary: #8a5410;
     --on-primary: #ffffff;
-    --primary-container: #e6dee6;
-    --on-primary-container: #1d1b1f;
-    --secondary-container: #e3dbe2;
-    --on-secondary-container: #1c1b1d;
-    --tertiary-container: #ebd6db;
-    --on-tertiary-container: #31111d;
+    --primary-container: #f8ead5;
+    --on-primary-container: #2d1a03;
+    --accent2: #0c6459;
+    --on-accent2: #ffffff;
+    --accent2-container: #cdeee7;
+    --on-accent2-container: #04302a;
+    --secondary-container: #e4e0ef;
+    --on-secondary-container: #1b1826;
+    --tertiary-container: #ece6f0;
+    --on-tertiary-container: #241f29;
+  /* in light, a raised card is white on the faintly tinted page ground */
+  --card: var(--surface-container-lowest);
+  --card-border: var(--outline-variant);
+  /* On white, an 8% film of currentColor (near-black) is a grey smear -
+     which is exactly why the light hover looked dirty while dark looked
+     fine. Tinting with the brand hue makes the same 8% read as warmth. */
+  /* The dark block's selector is `:root, :root[data-theme="dark"]`, so its
+     `--e1: none` also lands on plain :root - light therefore inherited NO
+     shadow at all until these re-declared it. Light is the theme that
+     actually needs them: on white, elevation IS the shadow. */
+  --e1: 0 1px 2px rgba(60,42,16,.05), 0 1px 3px 1px rgba(60,42,16,.04);
+  --e2: 0 2px 4px rgba(60,42,16,.06), 0 6px 14px 2px rgba(60,42,16,.07);
+  --e3: 0 4px 8px 3px rgba(60,42,16,.06), 0 1px 3px rgba(60,42,16,.08);
+  --state-layer: var(--primary);
+  --hover-border: color-mix(in srgb, var(--primary) 38%, var(--outline-variant));
+  /* the brass has to go much deeper on white or it is unreadable - same hue,
+     the tone the ground demands */
+  --hl: #7a4f14;
+  --hl-quiet: #8a6230;
+  --hl-container: #f6ecdf;
+    --scrim: #000;
 
     /* accent and severity, re-toned for a light ground: the dark values are
        bright-on-dark and fail contrast the moment the surface goes white. */
