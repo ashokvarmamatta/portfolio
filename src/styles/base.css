@@ -37,6 +37,8 @@ h1{font-family:var(--display);font-size:var(--fs-display);line-height:1.05;
 .lede:first-of-type{font-size:var(--fs-lede);line-height:1.48;color:var(--on-surface);
   margin-bottom:20px;letter-spacing:-.015em;font-weight:450}
 .lede b{color:var(--hl);font-weight:600}
+.lede a{text-decoration-color:var(--hl);text-underline-offset:3px;text-decoration-thickness:1px}
+.lede a:hover{color:var(--hl)}
 
 /* ---------- M3 buttons: 40dp tall, full round, 24dp padding, label-large ---------- */
 .links{display:flex;gap:8px;flex-wrap:wrap;margin-top:28px}
